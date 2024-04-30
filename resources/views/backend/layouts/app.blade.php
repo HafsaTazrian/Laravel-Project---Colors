@@ -28,6 +28,7 @@
 
   <!-- Template Main CSS File -->
   <link href="{{ url('assets/css/style.css') }}" rel="stylesheet">
+  @yield('style')
 
  
 </head>
@@ -46,6 +47,7 @@
 
 
   <!-- Vendor JS Files -->
+  <script src="{{ url('assets/js/jquery.min.js') }}"></script>
   <script src="{{ url('assets/vendor/apexcharts/apexcharts.min.js') }}"></script>
   <script src="{{ url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ url('assets/vendor/chart.js/chart.umd.js') }}"></script>
@@ -57,6 +59,7 @@
 
   <!-- Template Main JS File -->
   <script src="{{ url('assets/js/main.js') }}"></script>
+  @yield('script')
 
 </body>
 

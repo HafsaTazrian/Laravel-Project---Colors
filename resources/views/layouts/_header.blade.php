@@ -1,15 +1,15 @@
  <!-- Navbar Start -->
- <div class="container-fluid bg-light position-relative shadow">
+ <div class="container-fluid bg-light position-relative shadow"  >
       <nav
-        class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0 px-lg-5"
+        class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0 px-lg-5" 
       >
         <a
           href="{{ url('') }}" 
           class="navbar-brand font-weight-bold text-secondary"
-          style="font-size: 50px"
+          style="font-size: 50px;" 
         >
-          <i class="flaticon-043-teddy-bear"></i>
-          <span class="text-primary">Colors</span>
+          <img src="{{ url('assets/img/splashLogo.png') }}" alt="" width="50" height="50">
+          <span class="text-primary" style="color: #436850;">Colors</span>
         </a>
         <button
           type="button"
@@ -24,27 +24,15 @@
           id="navbarCollapse"
         >
           <div class="navbar-nav font-weight-bold mx-auto py-0">
-            <a href="index.html" class="nav-item nav-link active">Home</a>
-            <a href="about.html" class="nav-item nav-link">About</a>
-            <a href="class.html" class="nav-item nav-link">Classes</a>
-            <a href="team.html" class="nav-item nav-link">Teachers</a>
-            <a href="gallery.html" class="nav-item nav-link">Gallery</a>
-            <div class="nav-item dropdown">
-              <a
-                href="#"
-                class="nav-link dropdown-toggle"
-                data-toggle="dropdown"
-                >Pages</a
-              >
-              <div class="dropdown-menu rounded-0 m-0">
-                <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                <a href="single.html" class="dropdown-item">Blog Detail</a>
-              </div>
-            </div>
-            <a href="contact.html" class="nav-item nav-link">Contact</a>
+            <a href="{{ url('') }}" class="nav-item nav-link active">Home</a>
+            <a href="{{ url('about') }}" class="nav-item nav-link">About</a>
+            <a href="{{ url('blog') }}" class="nav-item nav-link">Blogs</a>
+            <a href="{{ url('teams') }}" class="nav-item nav-link">Teams</a>
+            <a href="{{ url('gallery') }}" class="nav-item nav-link">Gallery</a>
+            <a href="{{ url('contact') }}" class="nav-item nav-link">Contact</a>
           </div>
-          <a href="{{ url('register') }}" class="btn btn-primary px-4">Register</a>
-          <a href="{{ url('login') }}" class="btn btn-primary px-4" style="margin-left: 8px;">Login</a>  
+          <a href="{{ url('register') }}" class="btn btn-primary px-4" style="background-color: #436850; color: white;">Register</a>
+          <a href="{{ url('login') }}" class="btn btn-primary px-4" style="margin-left: 8px;background-color: #436850; color: white;">Login</a>  
         </div>
       </nav>
     </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\CategoryModel;
 use App\Models\BlogModel;
+use App\Models\BlogTagsModel;
 use Auth;
 use Str; //slug banate lage
 use File;
@@ -56,6 +57,8 @@ class BlogController extends Controller
 
         $save->save();
 
+        BlogTagsModel::InsertDeleteTag($save->id, $request->tags);
+
         return redirect('panel/blog/list')->with('success', "Blog successfully created");
     }
 
@@ -66,8 +69,7 @@ class BlogController extends Controller
     }
 
     public function update_blog($id,Request $request){
-        
-
+        //$save = BlogModel::with('getTag')->find($id);
         $save = BlogModel::getSingle($id);
         $save->title = trim($request->title);
         $save->category_id = trim($request->category_id);
@@ -76,6 +78,7 @@ class BlogController extends Controller
         $save->meta_keywords = trim($request->meta_keywords);
         $save->is_publish = trim($request->is_publish);
         $save->status = trim($request->status);
+        $save->save();
         
         if (!empty($request->file('image_file'))){
             if(!empty($save->getImage())){
@@ -85,11 +88,12 @@ class BlogController extends Controller
             $file = $request->file('image_file');
             $filename = $save->slug.'.'.$ext;
             $file->move('upload/blog/', $filename);
-        
             $save->image_file = $filename;
         }
 
         $save->save();
+
+        BlogTagsModel::InsertDeleteTag($save->id, $request->tags);
 
         return redirect('panel/blog/list')->with('success', "Blog successfully updated.");
     }
