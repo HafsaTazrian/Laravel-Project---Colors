@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\BlogController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,6 +46,41 @@ Route::get('logout', [AuthController::class, 'logout']);
 
 //Role Management- Middleware
 Route::group(['middleware' => 'adminuser'], function(){ //middleword : fixed word, adminuser: middleware name
+    
+    //admin dashboard panel - DashboardController
     Route::get('panel/dashboard', [DashboardController::class, 'dashboard']);
+
+
+    //User panel:
+    //admin panel - user: UserController
     Route::get('panel/user/list', [UserController::class, 'user']);
+
+    //add user button- Usercontroller
+    Route::get('panel/user/add', [UserController::class, 'add_user']);
+    Route::post('panel/user/add', [UserController::class, 'insert_user']);
+
+    //edit button - UserController
+    Route::get('panel/user/edit/{id}', [UserController::class, 'edit_user']);
+    Route::post('panel/user/edit/{id}', [UserController::class, 'update_user']);
+
+    //delete button - UserController
+    Route::get('panel/user/delete/{id}', [UserController::class, 'delete_user']);
+
+
+    //Category- CategoryController
+    Route::get('panel/category/list', [CategoryController::class, 'category']);
+    Route::get('panel/category/add', [CategoryController::class, 'add_category']);
+    Route::post('panel/category/add', [CategoryController::class, 'insert_category']);
+    Route::get('panel/category/edit/{id}', [CategoryController::class, 'edit_category']);
+    Route::post('panel/category/edit/{id}', [CategoryController::class, 'update_category']);
+    Route::get('panel/category/delete/{id}', [CategoryController::class, 'delete_category']);
+
+    //Blog- BlogController
+    Route::get('panel/blog/list', [BlogController::class, 'blog']);
+    Route::get('panel/blog/add', [BlogController::class, 'add_blog']);
+    Route::post('panel/blog/add', [BlogController::class, 'insert_blog']);
+    Route::get('panel/blog/edit/{id}', [BlogController::class, 'edit_blog']);
+    Route::post('panel/blog/edit/{id}', [BlogController::class, 'update_blog']);
+    Route::get('panel/blog/delete/{id}', [BlogController::class, 'delete_blog']);
+    
 });
