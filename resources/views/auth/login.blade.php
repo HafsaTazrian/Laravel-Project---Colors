@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -65,7 +65,7 @@
                       <label for="yourEmail" class="form-label" style="color: #436850;">Email</label>
                       <div class="input-group has-validation">
                         <input type="email" name="email" class="form-control" id="yourEmail" required>
-                        <div class="invalid-feedback" style="color: #436850;">Please enter your username.</div>
+                        <div class="invalid-feedback" style="color: #436850;">Please enter your email.</div>
                       </div>
                     </div>
 

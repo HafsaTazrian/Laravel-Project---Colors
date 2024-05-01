@@ -25,6 +25,7 @@
                     <th scope="col" style="background-color: #fbfada;">Meta Title</th>
                     <th scope="col" style="background-color: #fbfada;">Meta Description</th>
                     <th scope="col" style="background-color: #fbfada;">Meta Keywords</th>
+                    <th scope="col" style="background-color: #fbfada;">Menu</th>
                     <th scope="col" style="background-color: #fbfada;">Status</th>
                     <th scope="col" style="background-color: #fbfada;">Created Date</th>
                     <th scope="col" style="background-color: #fbfada;">Action</th>
@@ -40,6 +41,12 @@
                     <td style="background-color: #fbfada;">{{$value->meta_title}}</td>
                     <td style="background-color: #fbfada;">{{$value->meta_description}}</td>
                     <td style="background-color: #fbfada;">{{$value->meta_keywords}}</td>
+                    <td style="background-color: #fbfada;">
+                      {!! !empty($value->is_menu)
+                      ? '<i class="bi bi-check" style="color: #12372a; font-size: 1.5rem;"></i>'
+                      : '<i class="bi bi-x" style="color: #993e3c; font-size: 1.5rem;"></i>'
+                      !!}
+                    </td>
                     <td style="background-color: #fbfada;">{{ !empty($value->status) ? 'Inactive': 'Active'}}</td>
                     <td style="background-color: #fbfada;">{{date('d-m-Y H:i A', strtotime($value->created_at))}}</td>
                     <td style="background-color: #fbfada;">

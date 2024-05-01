@@ -34,6 +34,7 @@ class CategoryController extends Controller
         $save->meta_title = trim($request->meta_title);
         $save->meta_description = trim($request->meta_description);
         $save->meta_keywords = trim($request->meta_keywords);
+        $save->is_menu = trim($request->is_menu);
         $save->status = trim($request->status);
         $save->save();
 
@@ -54,6 +55,7 @@ class CategoryController extends Controller
            $save->meta_title = trim($request->meta_title);
            $save->meta_description = trim($request->meta_description);
            $save->meta_keywords = trim($request->meta_keywords);
+           $save->is_menu = trim($request->is_menu);
            $save->status = trim($request->status);
            $save->save();
    
@@ -67,4 +69,6 @@ class CategoryController extends Controller
 
         return redirect()->back()->with('success', "Category deleted.");
     }
+
+
 }

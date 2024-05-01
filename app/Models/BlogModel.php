@@ -16,7 +16,49 @@ class BlogModel extends Model
         return self::find($id);
     }
 
+    static public function getRecordSlug($slug) {
+        return  self::select('blog.*', 'users.name as user_name', 'category.name as category_name')
+            ->join('users', 'users.id', '=', 'blog.user_id')
+            ->join('category', 'category.id', '=', 'blog.category_id')
+            ->where('blog.status', '=', 0)
+            ->where('blog.is_publish', '=', 1)
+            ->where('blog.is_delete', '=', 0)
+            ->where('blog.slug', '=', $slug)
+            ->first();
+    }
+
     static public function getRecordFront() {
+        $return = self::select('blog.*', 'users.name as user_name', 'category.name as category_name')
+            ->join('users', 'users.id', '=', 'blog.user_id')
+            ->join('category', 'category.id', '=', 'blog.category_id');
+
+            if(!empty(Request::get('q')))
+            {
+                $return =$return->where('blog.title', 'like','%'.Request::get('q').'%' );
+            }
+
+        $return= $return->where('blog.status', '=', 0)
+            ->where('blog.is_publish', '=', 1)
+            ->where('blog.is_delete', '=', 0)
+            ->orderBy('blog.id', 'desc')
+            ->paginate(6);
+        return $return;
+    }
+
+    static public function getRecordFrontCategory($category_id) {
+        $return = self::select('blog.*', 'users.name as user_name', 'category.name as category_name')
+            ->join('users', 'users.id', '=', 'blog.user_id')
+            ->join('category', 'category.id', '=', 'blog.category_id')
+            ->where('blog.category_id', '=', $category_id)
+            ->where('blog.status', '=', 0)
+            ->where('blog.is_publish', '=', 1)
+            ->where('blog.is_delete', '=', 0)
+            ->orderBy('blog.id', 'desc')
+            ->paginate(6);
+        return $return;
+    }
+
+    static public function getRecentPost() {
         return  self::select('blog.*', 'users.name as user_name', 'category.name as category_name')
             ->join('users', 'users.id', '=', 'blog.user_id')
             ->join('category', 'category.id', '=', 'blog.category_id')
@@ -24,8 +66,22 @@ class BlogModel extends Model
             ->where('blog.is_publish', '=', 1)
             ->where('blog.is_delete', '=', 0)
             ->orderBy('blog.id', 'desc')
-            ->paginate(6);
+            ->limit(3)
+            ->get();
+    }
 
+    static public function getRelatedPost($category_id, $id) {
+        return  self::select('blog.*', 'users.name as user_name', 'category.name as category_name')
+            ->join('users', 'users.id', '=', 'blog.user_id')
+            ->join('category', 'category.id', '=', 'blog.category_id')
+            ->where('blog.category_id', '=', $category_id)
+            ->where('blog.id', '!=', $id)
+            ->where('blog.status', '=', 0)
+            ->where('blog.is_publish', '=', 1)
+            ->where('blog.is_delete', '=', 0)
+            ->orderBy('blog.id', 'desc')
+            ->limit(5)
+            ->get();
     }
 
 
@@ -92,4 +148,5 @@ class BlogModel extends Model
     public function getTag(){
         return $this->hasMany(BlogTagsModel::class, 'blog_id');
     }
+
 }

@@ -4,16 +4,14 @@
 
 <!-- Header Start -->
 <div class="container-fluid bg-primary mb-5">
-      <div
-        class="d-flex flex-column align-items-center justify-content-center"
-        style="min-height: 400px"
-      >
-        <h3 class="display-3 font-weight-bold text-white">Our Blog</h3>
-        <div class="d-inline-flex text-white">
-          <p class="m-0"><a class="text-white" href="">Home</a></p>
-          <p class="m-0 px-2">/</p>
-          <p class="m-0">Our Blog</p>
-        </div>
+      <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
+        <h3 class="display-3 font-weight-bold text-white">
+        @if(!empty($header_title))  
+          {{ $header_title }}
+        @else
+          Our Blogs!!!
+        @endif
+       </h3>
       </div>
     </div>
     <!-- Header End -->
@@ -21,12 +19,7 @@
     <!-- Blog Start -->
     <div class="container-fluid pt-5">
       <div class="container">
-        <div class="text-center pb-2">
-          <p class="section-title px-5">
-            <span class="px-2">Latest Blog</span>
-          </p>
-          <h1 class="mb-4">Latest Articles From Blog</h1>
-        </div>
+
         <div class="row pb-3">
 
         @foreach($getRecord as $value)

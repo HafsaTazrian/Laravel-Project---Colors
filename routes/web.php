@@ -88,3 +88,7 @@ Route::group(['middleware' => 'adminuser'], function(){ //middleword : fixed wor
     Route::get('panel/blog/delete/{id}', [BlogController::class, 'delete_blog']);
     
 });
+
+
+//always have to write this at the end-- for the slug: when no concatenation for the route
+Route::get('{slug}', [HomeController::class, 'blogdetail']);

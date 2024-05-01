@@ -9,7 +9,7 @@
           style="font-size: 50px;" 
         >
           <img src="{{ url('assets/img/splashLogo.png') }}" alt="" width="50" height="50">
-          <span class="text-primary" style="color: #436850;">Colors</span>
+          <span class="text-primary" >Colors</span>
         </a>
         <button
           type="button"
@@ -23,16 +23,22 @@
           class="collapse navbar-collapse justify-content-between"
           id="navbarCollapse"
         >
+        @php
+          $getCategoryHeader = App\Models\CategoryModel::getCategoryMenu();
+        @endphp
           <div class="navbar-nav font-weight-bold mx-auto py-0">
             <a href="{{ url('') }}" class="nav-item nav-link active">Home</a>
-            <a href="{{ url('about') }}" class="nav-item nav-link">About</a>
-            <a href="{{ url('blog') }}" class="nav-item nav-link">Blogs</a>
-            <a href="{{ url('teams') }}" class="nav-item nav-link">Teams</a>
+            <!-- <a href="{{ url('blog') }}" class="nav-item nav-link">Blogs</a> -->
+            @foreach($getCategoryHeader as $CategoryHeader)
+              <a href="{{ url(''.$CategoryHeader->slug) }}" class="nav-item nav-link">{{$CategoryHeader->name}}</a>
+            @endforeach
             <a href="{{ url('gallery') }}" class="nav-item nav-link">Gallery</a>
+            <!-- <a href="{{ url('about') }}" class="nav-item nav-link">About</a>
+            <a href="{{ url('teams') }}" class="nav-item nav-link">Teams</a>             -->
             <a href="{{ url('contact') }}" class="nav-item nav-link">Contact</a>
           </div>
-          <a href="{{ url('register') }}" class="btn btn-primary px-4" style="background-color: #436850; color: white;">Register</a>
-          <a href="{{ url('login') }}" class="btn btn-primary px-4" style="margin-left: 8px;background-color: #436850; color: white;">Login</a>  
+          <a href="{{ url('register') }}" class="btn btn-primary px-4">Register</a>
+          <a href="{{ url('login') }}" class="btn btn-primary px-4" style="margin-left: 8px;">Login</a>  
         </div>
       </nav>
     </div>

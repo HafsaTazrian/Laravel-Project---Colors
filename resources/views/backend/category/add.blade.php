@@ -39,14 +39,20 @@
                   <div style="color:red;">{{ $errors->first('meta_description') }}</div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-12">
                   <label class="form-label"  style="color:#436850;">Meta Keywords</label>
                   <input type="text" class="form-control" value="{{ old('meta_keywords') }}" name="meta_keywords">
                   <div style="color:red;">{{ $errors->first('meta_keywords') }}</div>
                 </div>
 
 
-              
+                <div class="col-md-6">
+                  <label for="inputName5" class="form-label"  style="color:#436850;">Menu *</label>
+                  <select class="form-control" name="is_menu">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                  </select>
+                </div>
 
                 <div class="col-md-6">
                   <label for="inputName5" class="form-label"  style="color:#436850;">Status *</label>
