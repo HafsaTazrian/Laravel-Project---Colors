@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Auth;
 
-class AuthMiddleware
+class AdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,12 +17,18 @@ class AuthMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (!empty(Auth::check())){
-            return $next($request);
+            if(Auth::user()->is_admin == 1){
+                return $next($request);
+            }
+            else{
+                Auth::logout();
+                return redirect(url(''));
+            }
+            
         }
         else{
             Auth::logout();
-            return redirect(url('login'));
+            return redirect(url(''));
         }
-        
     }
 }

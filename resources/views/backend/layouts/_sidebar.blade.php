@@ -10,12 +10,14 @@
     </a>
   </li><!-- End Dashboard Nav -->
 
+<!-- Don't need to show user and category menu for user login, so condition made -->
+  @if(Auth::user()->is_admin == 1)
   <li class="nav-item">
     <a class="nav-link @if(Request::segment(2) != 'user') collapsed @endif " href="{{ url('panel/user/list') }}" style="background-color: #adbc9f;">
       <i class="bi bi-person" ></i>
       <span>Users</span>
     </a>
-  </li><!-- End Profile Page Nav -->
+  </li><!-- End user Page Nav -->
 
 
   <li class="nav-item">
@@ -24,6 +26,7 @@
       <span>Category</span>
     </a>
   </li><!-- End Category Page Nav -->
+  @endif
 
   <li class="nav-item">
     <a class="nav-link @if(Request::segment(2) != 'blog') collapsed @endif " href="{{ url('panel/blog/list') }}" style="background-color: #adbc9f;">
@@ -31,6 +34,16 @@
       <span>Blogs</span>
     </a>
   </li><!-- End Blogs Page Nav -->
+
+<!-- not showing page menu if user login -->
+  @if(Auth::user()->is_admin == 1)
+  <li class="nav-item">
+    <a class="nav-link @if(Request::segment(2) != 'page') collapsed @endif " href="{{ url('panel/page/list') }}" style="background-color: #adbc9f;">
+    <i class="bi bi-file-earmark"></i>
+      <span>Page</span>
+    </a>
+  </li>
+  @endif
 
   <li class="nav-item">
     <a class="nav-link @if(Request::segment(2) != 'help') collapsed @endif " href="{{ url('panel/help/list') }}" style="background-color: #adbc9f; ">

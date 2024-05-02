@@ -34,15 +34,11 @@
                 </h4>
                </a>
                 <div class="d-flex justify-content-center mb-3">
-                  <small class="mr-3"
-                    ><i class="fa fa-user text-primary"></i>{{ $value->user_name }}</small
-                  >
-                  <small class="mr-3"
-                    ><i class="fa fa-folder text-primary"></i> {{ $value-> category_name }}</small
-                  >
-                  <small class="mr-3"
-                    ><i class="fa fa-comments text-primary"></i>0</small
-                  >
+                  <small class="mr-3"><i class="fa fa-user text-primary"></i>{{ $value->user_name }}</small>
+                  <small class="mr-3">
+                    <a href="{{ url(''.$value-> category_slug) }}"><i class="fa fa-folder text-primary"></i> {{ $value-> category_name }}</a>
+                  </small>
+                  <small class="mr-3"><i class="fa fa-comments text-primary"></i>{{ $value->getCommentCount() }}</small >
                 </div>
                 <p>
                     {!! strip_tags(Str::substr($value->description,0,160)) !!} ... <!--fits the description upto a definite size -->

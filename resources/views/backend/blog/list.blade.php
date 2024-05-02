@@ -20,10 +20,13 @@
                   <input type="text" name="id" value="{{ Request::get('id') }}" class="form-control" >
                 </div>
 
+                <!-- if not admin login, we will not show it  -->
+                @if(Auth::user()->is_admin == 1)
                 <div class="col-md-2" style="margin-bottom: 10px">
                   <label class="form-label">Username</label>
                   <input type="text" name="username" value="{{ Request::get('username') }}" class="form-control">
                 </div>
+                @endif
 
                 <div class="col-md-3" style="margin-bottom: 10px">
                   <label class="form-label">Title</label>
@@ -78,7 +81,10 @@
                   <tr >
                     <th scope="col" style="background-color: #fbfada;">#</th>
                     <th scope="col" style="background-color: #fbfada;">Image</th>
+                     <!-- will not show for only user login -->
+                    @if(Auth::user()->is_admin == 1)
                     <th scope="col" style="background-color: #fbfada;">Username</th>
+                    @endif
                     <th scope="col" style="background-color: #fbfada;">Title</th>
                     <th scope="col" style="background-color: #fbfada;">Category</th>
                     <th scope="col" style="background-color: #fbfada;">Status</th>
@@ -96,7 +102,10 @@
                       <img src="{{$value->getImage() }}" alt="" style="height: 100px; width: 100px;">
                     @endif
                     </td>
+                    <!-- will not show for only user login -->
+                    @if(Auth::user()->is_admin == 1)
                     <td style="background-color: #fbfada;">{{$value->user_name}}</td>
+                    @endif
                     <td style="background-color: #fbfada;">{{$value->title}}</td>
                     <td style="background-color: #fbfada;">{{$value->category_name}}</td>
                     <td style="background-color: #fbfada;">{{ !empty($value->status) ? 'Inactive': 'Active'}}</td>

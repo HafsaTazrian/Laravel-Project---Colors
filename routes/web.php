@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\PageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,10 +50,8 @@ Route::get('logout', [AuthController::class, 'logout']);
 
 
 //Role Management- Middleware
-Route::group(['middleware' => 'adminuser'], function(){ //middleword : fixed word, adminuser: middleware name
-    
-    //admin dashboard panel - DashboardController
-    Route::get('panel/dashboard', [DashboardController::class, 'dashboard']);
+//only admin access
+Route::group(['middleware' => 'admin'], function(){
 
 
     //User panel:
@@ -71,6 +70,7 @@ Route::group(['middleware' => 'adminuser'], function(){ //middleword : fixed wor
     Route::get('panel/user/delete/{id}', [UserController::class, 'delete_user']);
 
 
+
     //Category- CategoryController
     Route::get('panel/category/list', [CategoryController::class, 'category']);
     Route::get('panel/category/add', [CategoryController::class, 'add_category']);
@@ -79,6 +79,24 @@ Route::group(['middleware' => 'adminuser'], function(){ //middleword : fixed wor
     Route::post('panel/category/edit/{id}', [CategoryController::class, 'update_category']);
     Route::get('panel/category/delete/{id}', [CategoryController::class, 'delete_category']);
 
+     //Page- PageController
+     Route::get('panel/page/list', [PageController::class, 'page']);
+     Route::get('panel/page/add', [PageController::class, 'add_page']);
+     Route::post('panel/page/add', [PageController::class, 'insert_page']);
+     Route::get('panel/page/edit/{id}', [PageController::class, 'edit_page']);
+     Route::post('panel/page/edit/{id}', [PageController::class, 'update_page']);
+    // Route::get('panel/page/delete/{id}', [PageController::class, 'delete_page']);
+
+});
+
+
+//both admin and user access
+Route::group(['middleware' => 'adminuser'], function(){ //middleword : fixed word, adminuser: middleware name
+
+    
+    //admin dashboard panel - DashboardController
+    Route::get('panel/dashboard', [DashboardController::class, 'dashboard']);
+
     //Blog- BlogController
     Route::get('panel/blog/list', [BlogController::class, 'blog']);
     Route::get('panel/blog/add', [BlogController::class, 'add_blog']);
@@ -86,6 +104,9 @@ Route::group(['middleware' => 'adminuser'], function(){ //middleword : fixed wor
     Route::get('panel/blog/edit/{id}', [BlogController::class, 'edit_blog']);
     Route::post('panel/blog/edit/{id}', [BlogController::class, 'update_blog']);
     Route::get('panel/blog/delete/{id}', [BlogController::class, 'delete_blog']);
+
+   //Comment 
+   Route::post('blog-comment-submit', [HomeController::class, 'BlogCommentSubmit']);
     
 });
 

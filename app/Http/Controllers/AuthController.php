@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\PageModel;
 use App\Mail\RegisterMail;
 use App\Mail\ForgotPasswordMail;
 use Hash;
@@ -14,19 +15,35 @@ use Auth;
 class AuthController extends Controller
 {
     public function login(){
-        return view ('auth.login');
+        $getPage = PageModel::getSlug('login');
+        $data['meta_title'] = !empty($getPage) ? $getPage->meta_title : 'Login';
+        $data['meta_description'] = !empty($getPage) ? $getPage->meta_description : '';
+        $data['meta_keywords'] = !empty($getPage) ? $getPage->meta_keywords : '';
+        return view ('auth.login', $data);
     }
 
     public function register(){
-        return view ('auth.register');
+        $getPage = PageModel::getSlug('register');
+        $data['meta_title'] = !empty($getPage) ? $getPage->meta_title : 'Register';
+        $data['meta_description'] = !empty($getPage) ? $getPage->meta_description : '';
+        $data['meta_keywords'] = !empty($getPage) ? $getPage->meta_keywords : '';
+        return view ('auth.register', $data);
     }
     public function forgot(){
-        return view ('auth.forgot');
+        $getPage = PageModel::getSlug('forgot');
+        $data['meta_title'] = !empty($getPage) ? $getPage->meta_title : '';
+        $data['meta_description'] = !empty($getPage) ? $getPage->meta_description : '';
+        $data['meta_keywords'] = !empty($getPage) ? $getPage->meta_keywords : '';
+        return view ('auth.forgot', $data);
     }
 
     public function reset($token){
         $user= User::where('remember_token', '=', $token)->first();
         if(!empty($user)){
+            $getPage = PageModel::getSlug('reset');
+            $data['meta_title'] = !empty($getPage) ? $getPage->meta_title : 'ResetPassword';
+            $data['meta_description'] = !empty($getPage) ? $getPage->meta_description : '';
+            $data['meta_keywords'] = !empty($getPage) ? $getPage->meta_keywords : '';
             $data['user'] = $user;
             return view ('auth.reset', $data);
         }
@@ -38,6 +55,7 @@ class AuthController extends Controller
     public function post_reset($token, Request $request){
         $user= User::where('remember_token', '=', $token)->first();
         if(!empty($user)){
+            
             if($request->password == $request->cpassword){
                 $user->password = Hash::make($request->password);
                 if(empty($user->email_verified_at)){
