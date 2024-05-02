@@ -7,6 +7,7 @@ use App\Models\BlogModel;
 use App\Models\CategoryModel;
 use App\Models\PageModel;
 use App\Models\BlogCommentModel;
+use App\Models\BlogCommentReplyModel;
 use Auth;
 
 class HomeController extends Controller
@@ -97,7 +98,17 @@ class HomeController extends Controller
         $save->comment = $request->comment;
         $save->save();
 
-        return redirect()->back()->with('success', "Comment successfully added.");
+        return redirect()->back()->with('success', "Thanks for your reply.");
+    }
+
+    public function BlogCommentReplySubmit(Request $request){
+        $save = new BlogCommentReplyModel;
+        $save->user_id = Auth::user()->id;
+        $save->comment_id = $request->comment_id;
+        $save->comment = $request->comment;
+        $save->save();
+
+        return redirect()->back()->with('success', "Thanks for your reply.");
     }
 
 

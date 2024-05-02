@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Auth;
 use Hash;
+use Str;
 
 class UserController extends Controller
 {
@@ -65,5 +66,60 @@ class UserController extends Controller
         $save->save();
 
         return redirect()->back()->with('success', "User deleted.");
+    }
+
+    public function ChangePassword(){
+       
+        return view ('backend.user.change_password');
+    }
+
+    public function UpdatePassword(Request $request){
+        $user = User::getSingle(Auth::user()->id);
+
+        if(Hash::check($request->old_password, $user->password)){
+            if($request->new_password == $request->confirm_password){
+                $user->password = Hash::make($request->new_password);
+                $user->save();
+
+                return redirect('panel/dashboard')->with('success', "Password successfully updated.");
+            }
+            else{
+                return redirect()->back()->with('error', "New password and confirm password don't match.");
+            }
+
+        }
+        else{
+            return redirect()->back()->with('error', "Incorrect Password.");
+        }
+    }
+
+    public function AccountSetting(){
+        $data['getUser'] = User::getSingle(Auth::user()->id);
+        return view ('backend.profile.account_setting', $data);
+    }
+
+    public function UpdateAccountSetting(Request $request){
+        $getUser = User::getSingle(Auth::user()->id);
+        $getUser->name = $request->name;
+        $getUser->profile_identity = $request->profile_identity;
+        $getUser->profile_description = $request->profile_description;
+        $getUser->save();
+
+        if (!empty($request->file('profile_pic'))){
+            if(!empty($getUser->profile_pic) && file_exists('upload/profile/'.$getUser->profile_pic))
+            {
+                unlink('upload/profile/'.$getUser->profile_pic);
+            }
+            $ext = $request->file('profile_pic')->getClientOriginalExtension();
+            $file = $request->file('profile_pic');
+            $filename = Str::random(20).','.$ext;
+            $file->move('upload/profile/', $filename);
+        
+            $getUser->profile_pic = $filename;
+        }
+
+        $getUser->save();
+
+        return redirect('panel/dashboard')->with('success', "Account successfully updated.");
     }
 }

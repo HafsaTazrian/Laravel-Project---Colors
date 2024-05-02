@@ -46,18 +46,27 @@
   @endif
 
   <li class="nav-item">
+    <a class="nav-link @if(Request::segment(2) != 'change-password') collapsed @endif " href="{{ url('panel/change-password') }}" style="background-color: #adbc9f;">
+    <i class="bi bi-key"></i>
+      <span>Change Password</span>
+    </a>
+  </li>
+
+  <!-- <li class="nav-item">
     <a class="nav-link @if(Request::segment(2) != 'help') collapsed @endif " href="{{ url('panel/help/list') }}" style="background-color: #adbc9f; ">
       <i class="bi bi-question-circle" ></i>
       <span>F.A.Q/ Help</span>
     </a>
-  </li><!-- End F.A.Q/ Help Page Nav -->
+  </li> -->
+  <!-- End F.A.Q/ Help Page Nav -->
 
-  <li class="nav-item">
+  <!-- <li class="nav-item">
     <a class="nav-link @if(Request::segment(2) != 'inbox') collapsed @endif " href="{{ url('') }}l" style="background-color: #adbc9f; ">
       <i class="bi bi-envelope" ></i>
       <span>Inbox</span>
     </a>
-  </li><!-- End Inbox Page Nav -->
+  </li> -->
+  <!-- End Inbox Page Nav -->
 
   
 

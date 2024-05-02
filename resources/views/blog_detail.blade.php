@@ -80,31 +80,9 @@
                 <p>
                   {{$comment-> comment}}
                 </p>
-                <button class="btn btn-sm btn-light">Reply</button>
-              </div>
-            </div>
-            @endforeach
+                <button class="btn btn-sm btn-light ReplyOpen" id="{{ $comment->id }}">Reply</button>
 
-
-            <!-- <div class="media mb-4">
-              <img
-                src="{{ url('front/img/user.jpg') }}"
-                alt="Image"
-                class="img-fluid rounded-circle mr-3 mt-1"
-                style="width: 45px"
-              />
-              <div class="media-body">
-                <h6>
-                  John Doe <small><i>01 Jan 2045 at 12:00pm</i></small>
-                </h6>
-                <p>
-                  Diam amet duo labore stet elitr ea clita ipsum, tempor labore
-                  accusam ipsum et no at. Kasd diam tempor rebum magna dolores
-                  sed sed eirmod ipsum. Gubergren clita aliquyam consetetur
-                  sadipscing, at tempor amet ipsum diam tempor consetetur at
-                  sit.
-                </p>
-                <button class="btn btn-sm btn-light">Reply</button>
+                @foreach($comment->getReply as $reply)
                 <div class="media mt-4">
                   <img
                     src="{{ url('front/img/user.jpg') }}"
@@ -113,21 +91,35 @@
                     style="width: 45px"
                   />
                   <div class="media-body">
-                    <h6>
-                      John Doe <small><i>01 Jan 2045 at 12:00pm</i></small>
-                    </h6>
+                  <h6>
+                  {{ $reply->user->name }} <small><i>{{ date('d M Y', strtotime($reply->created_at)) }} at {{ date('h:i A', strtotime($reply->created_at)) }}</i></small>
+                </h6>
                     <p>
-                      Diam amet duo labore stet elitr ea clita ipsum, tempor
-                      labore accusam ipsum et no at. Kasd diam tempor rebum
-                      magna dolores sed sed eirmod ipsum. Gubergren clita
-                      aliquyam consetetur, at tempor amet ipsum diam tempor at
-                      sit.
+                      {{ $reply->comment }}
                     </p>
-                    <button class="btn btn-sm btn-light">Reply</button>
                   </div>
                 </div>
+                @endforeach
+
+                <div class="bg-light p-3 ShowReply{{ $comment->id }}" style="display: none">
+                  <h2 class="mb-4">Reply to this comment</h2>
+                  <form method="post" action="{{ url('blog-comment-reply-submit') }}">
+                  {{csrf_field()}}
+                  <input type="hidden" name="comment_id" value="{{ $comment->id }}">
+                  <div class="form-group">
+                    <label for="message">Reply *</label>
+                    <textarea name="comment" required cols="30" rows="5" class="form-control"></textarea>
+                  </div>
+                  <div class="form-group mb-0">
+                    <input type="submit" value="Leave Reply" class="btn btn-primary px-3"/>
+                  </div>
+                  </form>
+                </div>
+
               </div>
-            </div> -->
+            </div>
+            @endforeach
+
           </div>
 
           <!-- Comment Form -->
@@ -149,19 +141,21 @@
 
         <div class="col-lg-4 mt-5 mt-lg-0">
           <!-- Author Bio -->
-          <!-- <div class="d-flex flex-column text-center bg-primary rounded mb-5 py-5 px-4"  >
+          <div class="d-flex flex-column text-center bg-primary rounded mb-5 py-5 px-4"  >
             <img
-              src="{{ url('front/img/user.jpg') }}"
+              src="{{ Auth::user()->getProfile() }}"
               class="img-fluid rounded-circle mx-auto mb-3"
-              style="width: 100px"
+              style="width: 80px; height: 80px;"
             />
-            <h3 class="text-secondary mb-3">John Doe</h3>
-            <p class="text-white m-0">
-              Conset elitr erat vero dolor ipsum et diam, eos dolor lorem ipsum,
-              ipsum ipsum sit no ut est. Guber ea ipsum erat kasd amet est elitr
-              ea sit.
+            <h3 class="text-secondary mb-3">{{ Auth::user()->name }}</h3>
+            <p style="color: black;" >
+            {{ Auth::user()->profile_identity }}
             </p>
-          </div> -->
+            <p style="font-size: 70%;"class="text-white m-0">
+            {!! strip_tags(Str::substr(Auth::user()->profile_description,0,200)) !!}
+            
+            </p>
+          </div>
 
           <!-- Search Form -->
           <div class="mb-5">
@@ -235,4 +229,13 @@
     <!-- Detail End -->
 
 
+@endsection
+
+@section('script')
+<script type="text/javascript">
+  $('.ReplyOpen').click(function(){
+    var id= $(this).attr('id');
+    $('.ShowReply'+id).toggle();
+  });
+</script>
 @endsection

@@ -97,6 +97,15 @@ Route::group(['middleware' => 'adminuser'], function(){ //middleword : fixed wor
     //admin dashboard panel - DashboardController
     Route::get('panel/dashboard', [DashboardController::class, 'dashboard']);
 
+    //Change Password - UserController
+    Route::get('panel/account-setting', [UserController::class, 'AccountSetting']);
+    Route::post('panel/account-setting', [UserController::class, 'UpdateAccountSetting']);
+
+    //Account Settings- UserController
+    Route::get('panel/change-password', [UserController::class, 'ChangePassword']);
+    Route::post('panel/change-password', [UserController::class, 'UpdatePassword']);
+
+
     //Blog- BlogController
     Route::get('panel/blog/list', [BlogController::class, 'blog']);
     Route::get('panel/blog/add', [BlogController::class, 'add_blog']);
@@ -107,6 +116,8 @@ Route::group(['middleware' => 'adminuser'], function(){ //middleword : fixed wor
 
    //Comment 
    Route::post('blog-comment-submit', [HomeController::class, 'BlogCommentSubmit']);
+   //Reply
+   Route::post('blog-comment-reply-submit', [HomeController::class, 'BlogCommentReplySubmit']);
     
 });
 
