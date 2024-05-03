@@ -30,16 +30,16 @@
         <div class="row">
           <div class="col-12 text-center mb-2">
             <ul class="list-inline mb-4" id="portfolio-flters">
-              <li class="btn btn-outline-primary m-1 active" data-filter="*">
+              <li class="btn btn-light m-1 " data-filter="*">
                 All
               </li>
-              <li class="btn btn-outline-primary m-1" data-filter=".first">
+              <li class="btn btn-light m-1" data-filter=".first">
                 Playing
               </li>
-              <li class="btn btn-outline-primary m-1" data-filter=".second">
+              <li class="btn btn-light m-1" data-filter=".second">
                 Drawing
               </li>
-              <li class="btn btn-outline-primary m-1" data-filter=".third">
+              <li class="btn btn-light m-1" data-filter=".third">
                 Reading
               </li>
             </ul>

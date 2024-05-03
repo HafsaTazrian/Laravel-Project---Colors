@@ -11,11 +11,11 @@
             
             <h1 class="mb-3">{{ $getRecord->title }}</h1>
             <div class="d-flex">
-              <p class="mr-3"><i class="fa fa-user text-primary"></i> {{ $getRecord->user_name }}</p>
+              <p class="mr-3"><i class="fa fa-user" style="color: #436850;"></i> {{ $getRecord->user_name }}</p>
               <p class="mr-3">
-                <a href="{{ url(''.$getRecord->category_slug) }}"> <i class="fa fa-folder text-primary"></i> {{ $getRecord->category_name }}</a>
+                <a href="{{ url(''.$getRecord->category_slug) }}"> <i class="fa fa-folder" style="color: #436850;"></i> {{ $getRecord->category_name }}</a>
               </p>
-              <p class="mr-3"><i class="fa fa-comments text-primary"></i> {{ $getRecord->getCommentCount() }} </p>
+              <p class="mr-3"><i class="fa fa-comments" style="color: #436850;"></i> {{ $getRecord->getCommentCount() }} </p>
             </div>
           </div>
           <div class="mb-5">
@@ -80,7 +80,7 @@
                 <p>
                   {{$comment-> comment}}
                 </p>
-                <button class="btn btn-sm btn-light ReplyOpen" id="{{ $comment->id }}">Reply</button>
+                <button class="btn  btn-light ReplyOpen" id="{{ $comment->id }}">Reply</button>
 
                 @foreach($comment->getReply as $reply)
                 <div class="media mt-4">
@@ -148,7 +148,7 @@
               style="width: 80px; height: 80px;"
             />
             <h3 class="text-secondary mb-3">{{ Auth::user()->name }}</h3>
-            <p style="color: black;" >
+            <p style="color: #adbc9f;" >
             {{ Auth::user()->profile_identity }}
             </p>
             <p style="font-size: 70%;"class="text-white m-0">
@@ -163,8 +163,8 @@
               <div class="input-group">
                 <input name="q" type="text" required class="form-control form-control-lg" placeholder="Keyword"/>
                 <div class="input-group-append">
-                  <button class="input-group-text bg-transparent text-primary"
-                    ><i class="fa fa-search"></i
+                  <button class="input-group-text bg-transparent"
+                    ><i class="fa fa-search" style="color: #12372a"></i
                   ></button>
                 </div>
               </div>
@@ -217,7 +217,7 @@
             <h2 class="mb-4">Tag Cloud</h2>
             <div class="d-flex flex-wrap m-n1">
             @foreach($getRecord->getTag as $tag)
-              <a href="{{ url('blog?q='.$tag->name) }}" class="btn btn-outline-primary m-1">{{$tag->name}}</a>
+              <a href="{{ url('blog?q='.$tag->name) }}" class="btn btn-light m-1">{{$tag->name}}</a>
             @endforeach
             </div>
           </div>

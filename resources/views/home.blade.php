@@ -5,7 +5,7 @@
 
 @section('content')
     <!-- Header Start -->
-    <div class="container-fluid bg-primary px-0 px-md-5 mb-5">
+    <div class="container-fluid bg-primary px-0 px-md-5 mb-5" style="background-color: green;">
       <div class="row align-items-center px-3">
         <div class="col-lg-6 text-center text-lg-left">
           <h4 class="text-white mb-4 mt-5 mt-lg-0">Kids Learning Center</h4>
@@ -166,22 +166,22 @@
               </div>
               <div class="col-6 col-md-8">
                 <ul class="list-inline m-0">
-                  <li class="py-2 border-top border-bottom">
-                    <i class="fa fa-check text-primary mr-3"></i>Labore eos amet
+                  <li class="py-2 border-top border-bottom" style="color: #5a7929; ">
+                    <i class="fa fa-check  mr-3" style= "color: #436850;"></i>Labore eos amet
                     dolor amet diam
                   </li>
-                  <li class="py-2 border-bottom">
-                    <i class="fa fa-check text-primary mr-3"></i>Etsea et sit
+                  <li class="py-2 border-bottom" style="color: #5a7929; ">
+                    <i class="fa fa-check  mr-3" style= "color: #436850;"></i>Etsea et sit
                     dolor amet ipsum
                   </li>
-                  <li class="py-2 border-bottom">
-                    <i class="fa fa-check text-primary mr-3"></i>Diam dolor diam
+                  <li class="py-2 border-bottom" style="color: #5a7929; ">
+                    <i class="fa fa-check mr-3" style= "color: #436850;"></i>Diam dolor diam
                     elitripsum vero.
                   </li>
                 </ul>
               </div>
             </div>
-            <a href="" class="btn btn-primary mt-2 py-2 px-4">Learn More</a>
+            <a href="" class="btn btn-secondary mt-2 py-2 px-4">Learn More</a>
           </div>
         </div>
       </div>
