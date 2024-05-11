@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\BlogModel;
+use Auth;
+use Request;
 
 class CategoryModel extends Model
 {
@@ -55,6 +57,17 @@ class CategoryModel extends Model
                 ->where('is_delete', '=', 0)
                 ->where('status', '=', 0)
                 ->first();
+    }
+
+    static public function getCategoryHome()
+    {
+        return self::select('category.*')
+                ->where('is_delete', '=', 0)
+                ->where('is_menu', '=', 0)
+                ->where('status', '=', 0)
+                ->orderBy('id', 'desc')
+                ->limit(6)
+                ->get();
     }
 
 }

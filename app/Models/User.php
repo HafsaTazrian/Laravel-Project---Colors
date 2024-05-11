@@ -56,6 +56,25 @@ class User extends Authenticatable
             ->paginate(10);
     }
 
+    static public function getRecordAdminHome(){
+        return User::select('users.*')
+            ->where('is_admin', '=', 1)
+            ->where('is_delete', '=', 0)
+            ->orderBy('users.id', 'desc')
+            ->limit(4)
+            ->get();
+    }
+
+    static public function getRecordUserHome(){
+        return User::select('users.*')
+            ->where('is_admin', '=', 0)
+            ->where('is_delete', '=', 0)
+            ->where('remarks', '!=' , 'NULL')
+            ->orderBy('users.id', 'desc')
+            ->limit(4)
+            ->get();
+    }
+
     public function getProfile(){
         if(!empty($this->profile_pic) && file_exists('upload/profile/'.$this->profile_pic)){
             return url('upload/profile/'.$this->profile_pic);

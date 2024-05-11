@@ -23,267 +23,42 @@
       <div class="container">
         <div class="text-center pb-2">
           <p class="section-title px-5">
-            <span class="px-2">Teams</span>
+            <span class="px-2">Our Team</span>
           </p>
-          <h1 class="mb-4">Meet Teams</h1>
+          <h1 class="mb-4">Meet Our Admins</h1>
         </div>
         <div class="row">
+        @foreach( $data['getRecordAdminHome'] as $AdminHome)
           <div class="col-md-6 col-lg-3 text-center team mb-5">
-            <div
-              class="position-relative overflow-hidden mb-4"
-              style="border-radius: 100%"
-            >
-              <img class="img-fluid w-100" src="{{ url('front/img/team-1.jpg') }}" alt="" />
+            <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%">
+              <img class="img-fluid w-100" src="{{ $AdminHome->getProfile() }}" />
               <div
                 class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
               >
                 <a
                   class="btn btn-outline-light text-center mr-2 px-0"
                   style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-twitter"></i
+                  href="https://github.com/HafsaTazrian"
+                  ><i class="fab fa-github"></i
                 ></a>
                 <a
                   class="btn btn-outline-light text-center mr-2 px-0"
                   style="width: 38px; height: 38px"
-                  href="#"
+                  href="https://www.facebook.com"
                   ><i class="fab fa-facebook-f"></i
                 ></a>
                 <a
                   class="btn btn-outline-light text-center px-0"
                   style="width: 38px; height: 38px"
-                  href="#"
+                  href="http://www.linkedin.com/in/hafsa-tazrian-8579"
                   ><i class="fab fa-linkedin-in"></i
                 ></a>
               </div>
             </div>
-            <h4>Julia Smith</h4>
-            <i>Music Teacher</i>
+            <h4>{{$AdminHome->name}}</h4>
+            <i>{{$AdminHome->profile_identity}}</i>
           </div>
-          <div class="col-md-6 col-lg-3 text-center team mb-5">
-            <div
-              class="position-relative overflow-hidden mb-4"
-              style="border-radius: 100%"
-            >
-              <img class="img-fluid w-100" src="{{ url('front/img/team-2.jpg') }}" alt="" />
-              <div
-                class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
-              >
-                <a
-                  class="btn btn-outline-light text-center mr-2 px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-twitter"></i
-                ></a>
-                <a
-                  class="btn btn-outline-light text-center mr-2 px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-facebook-f"></i
-                ></a>
-                <a
-                  class="btn btn-outline-light text-center px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-linkedin-in"></i
-                ></a>
-              </div>
-            </div>
-            <h4>Jhon Doe</h4>
-            <i>Language Teacher</i>
-          </div>
-          <div class="col-md-6 col-lg-3 text-center team mb-5">
-            <div
-              class="position-relative overflow-hidden mb-4"
-              style="border-radius: 100%"
-            >
-              <img class="img-fluid w-100" src="{{ url('front/img/team-3.jpg') }}" alt="" />
-              <div
-                class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
-              >
-                <a
-                  class="btn btn-outline-light text-center mr-2 px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-twitter"></i
-                ></a>
-                <a
-                  class="btn btn-outline-light text-center mr-2 px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-facebook-f"></i
-                ></a>
-                <a
-                  class="btn btn-outline-light text-center px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-linkedin-in"></i
-                ></a>
-              </div>
-            </div>
-            <h4>Mollie Ross</h4>
-            <i>Dance Teacher</i>
-          </div>
-          <div class="col-md-6 col-lg-3 text-center team mb-5">
-            <div
-              class="position-relative overflow-hidden mb-4"
-              style="border-radius: 100%"
-            >
-              <img class="img-fluid w-100" src="{{ url('front/img/team-4.jpg') }}" alt="" />
-              <div
-                class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
-              >
-                <a
-                  class="btn btn-outline-light text-center mr-2 px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-twitter"></i
-                ></a>
-                <a
-                  class="btn btn-outline-light text-center mr-2 px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-facebook-f"></i
-                ></a>
-                <a
-                  class="btn btn-outline-light text-center px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-linkedin-in"></i
-                ></a>
-              </div>
-            </div>
-            <h4>Donald John</h4>
-            <i>Art Teacher</i>
-          </div>
-          <div class="col-md-6 col-lg-3 text-center team mb-5">
-            <div
-              class="position-relative overflow-hidden mb-4"
-              style="border-radius: 100%"
-            >
-              <img class="img-fluid w-100" src="{{ url('front/img/team-4.jpg') }}" alt="" />
-              <div
-                class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
-              >
-                <a
-                  class="btn btn-outline-light text-center mr-2 px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-twitter"></i
-                ></a>
-                <a
-                  class="btn btn-outline-light text-center mr-2 px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-facebook-f"></i
-                ></a>
-                <a
-                  class="btn btn-outline-light text-center px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-linkedin-in"></i
-                ></a>
-              </div>
-            </div>
-            <h4>Julia Smith</h4>
-            <i>Music Teacher</i>
-          </div>
-          <div class="col-md-6 col-lg-3 text-center team mb-5">
-            <div
-              class="position-relative overflow-hidden mb-4"
-              style="border-radius: 100%"
-            >
-              <img class="img-fluid w-100" src="{{ url('front/img/team-3.jpg') }}" alt="" />
-              <div
-                class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
-              >
-                <a
-                  class="btn btn-outline-light text-center mr-2 px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-twitter"></i
-                ></a>
-                <a
-                  class="btn btn-outline-light text-center mr-2 px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-facebook-f"></i
-                ></a>
-                <a
-                  class="btn btn-outline-light text-center px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-linkedin-in"></i
-                ></a>
-              </div>
-            </div>
-            <h4>Jhon Doe</h4>
-            <i>Language Teacher</i>
-          </div>
-          <div class="col-md-6 col-lg-3 text-center team mb-5">
-            <div
-              class="position-relative overflow-hidden mb-4"
-              style="border-radius: 100%"
-            >
-              <img class="img-fluid w-100" src="{{ url('front/img/team-2.jpg') }}" alt="" />
-              <div
-                class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
-              >
-                <a
-                  class="btn btn-outline-light text-center mr-2 px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-twitter"></i
-                ></a>
-                <a
-                  class="btn btn-outline-light text-center mr-2 px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-facebook-f"></i
-                ></a>
-                <a
-                  class="btn btn-outline-light text-center px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-linkedin-in"></i
-                ></a>
-              </div>
-            </div>
-            <h4>Mollie Ross</h4>
-            <i>Dance Teacher</i>
-          </div>
-          <div class="col-md-6 col-lg-3 text-center team mb-5">
-            <div
-              class="position-relative overflow-hidden mb-4"
-              style="border-radius: 100%"
-            >
-              <img class="img-fluid w-100" src="{{ url('front/img/team-1.jpg') }}" alt="" />
-              <div
-                class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
-              >
-                <a
-                  class="btn btn-outline-light text-center mr-2 px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-twitter"></i
-                ></a>
-                <a
-                  class="btn btn-outline-light text-center mr-2 px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-facebook-f"></i
-                ></a>
-                <a
-                  class="btn btn-outline-light text-center px-0"
-                  style="width: 38px; height: 38px"
-                  href="#"
-                  ><i class="fab fa-linkedin-in"></i
-                ></a>
-              </div>
-            </div>
-            <h4>Donald John</h4>
-            <i>Art Teacher</i>
-          </div>
+        @endforeach
         </div>
       </div>
     </div>
@@ -296,85 +71,29 @@
           <p class="section-title px-5">
             <span class="px-2">Testimonial</span>
           </p>
-          <h1 class="mb-4">What Parents Say!</h1>
+          <h1 class="mb-4">What Users Say!</h1>
         </div>
         <div class="owl-carousel testimonial-carousel">
+        @foreach( $data['getRecordUserHome'] as $UserHome)
           <div class="testimonial-item px-3">
             <div class="bg-light shadow-sm rounded mb-4 p-4">
               <h3 class="fas fa-quote-left text-primary mr-3"></h3>
-              Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr
-              eirmod clita lorem. Dolor tempor ipsum clita
+              {{ $UserHome->remarks}}
             </div>
             <div class="d-flex align-items-center">
               <img
                 class="rounded-circle"
-                src="{{ url('front/img/testimonial-1.jpg') }}"
+                src="{{ $UserHome->getProfile() }}"
                 style="width: 70px; height: 70px"
                 alt="Image"
               />
               <div class="pl-3">
-                <h5>Parent Name</h5>
-                <i>Profession</i>
+                <h5>{{ $UserHome->name}}</h5>
+                <i>{{  $UserHome->profile_identity }}</i>
               </div>
             </div>
           </div>
-          <div class="testimonial-item px-3">
-            <div class="bg-light shadow-sm rounded mb-4 p-4">
-              <h3 class="fas fa-quote-left text-primary mr-3"></h3>
-              Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr
-              eirmod clita lorem. Dolor tempor ipsum clita
-            </div>
-            <div class="d-flex align-items-center">
-              <img
-                class="rounded-circle"
-                src="{{ url('front/img/testimonial-2') }}.jpg"
-                style="width: 70px; height: 70px"
-                alt="Image"
-              />
-              <div class="pl-3">
-                <h5>Parent Name</h5>
-                <i>Profession</i>
-              </div>
-            </div>
-          </div>
-          <div class="testimonial-item px-3">
-            <div class="bg-light shadow-sm rounded mb-4 p-4">
-              <h3 class="fas fa-quote-left text-primary mr-3"></h3>
-              Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr
-              eirmod clita lorem. Dolor tempor ipsum clita
-            </div>
-            <div class="d-flex align-items-center">
-              <img
-                class="rounded-circle"
-                src="{{ url('front/img/testimonial-3') }}.jpg"
-                style="width: 70px; height: 70px"
-                alt="Image"
-              />
-              <div class="pl-3">
-                <h5>Parent Name</h5>
-                <i>Profession</i>
-              </div>
-            </div>
-          </div>
-          <div class="testimonial-item px-3">
-            <div class="bg-light shadow-sm rounded mb-4 p-4">
-              <h3 class="fas fa-quote-left text-primary mr-3"></h3>
-              Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr
-              eirmod clita lorem. Dolor tempor ipsum clita
-            </div>
-            <div class="d-flex align-items-center">
-              <img
-                class="rounded-circle"
-                src="{{ url('front/img/testimonial-4.jpg') }}"
-                style="width: 70px; height: 70px"
-                alt="Image"
-              />
-              <div class="pl-3">
-                <h5>Parent Name</h5>
-                <i>Profession</i>
-              </div>
-            </div>
-          </div>
+          @endforeach
         </div>
       </div>
     </div>

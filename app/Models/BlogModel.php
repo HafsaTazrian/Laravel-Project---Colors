@@ -46,6 +46,24 @@ class BlogModel extends Model
         return $return;
     }
 
+    static public function getRecordFrontHome() {
+        $return = self::select('blog.*', 'users.name as user_name', 'category.name as category_name', 'category.slug as category_slug')      
+            ->join('users', 'users.id', '=', 'blog.user_id')
+            ->join('category', 'category.id', '=', 'blog.category_id');
+
+            if(!empty(Request::get('q')))
+            {
+                $return =$return->where('blog.title', 'like','%'.Request::get('q').'%' );
+            }
+
+        $return= $return->where('blog.status', '=', 0)
+            ->where('blog.is_publish', '=', 1)
+            ->where('blog.is_delete', '=', 0)
+            ->orderBy('blog.id', 'desc')
+            ->paginate(3);
+        return $return;
+    }
+
     static public function getRecordFrontCategory($category_id) {
         $return = self::select('blog.*', 'users.name as user_name', 'category.name as category_name', 'category.slug as category_slug')
             ->join('users', 'users.id', '=', 'blog.user_id')

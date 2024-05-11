@@ -8,6 +8,7 @@ use App\Models\CategoryModel;
 use App\Models\PageModel;
 use App\Models\BlogCommentModel;
 use App\Models\BlogCommentReplyModel;
+use App\Models\User;
 use Auth;
 
 class HomeController extends Controller
@@ -111,5 +112,32 @@ class HomeController extends Controller
         return redirect()->back()->with('success', "Thanks for your reply.");
     }
 
+    public function index() {
+        $data['getRecord'] = BlogModel::getRecordFrontHome();
+        $data['getCategoryHome'] = CategoryModel::getCategoryHome();
+        $data['getRecordAdminHome'] = User::getRecordAdminHome();
+        $data['getRecordUserHome'] = User::getRecordUserHome();
+        return view('home', compact('data'));
+    }
+
+    public function indexAbout() {
+        $data['getRecord'] = BlogModel::getRecordFrontHome();
+        $data['getCategoryHome'] = CategoryModel::getCategoryHome();
+        $data['getRecordAdminHome'] = User::getRecordAdminHome();
+        $data['getRecordUserHome'] = User::getRecordUserHome();
+        return view('about', compact('data'));
+    }
+
+    public function indexTeams() {
+        $data['getRecord'] = BlogModel::getRecordFrontHome();
+        $data['getCategoryHome'] = CategoryModel::getCategoryHome();
+        $data['getRecordAdminHome'] = User::getRecordAdminHome();
+        $data['getRecordUserHome'] = User::getRecordUserHome();
+        return view('teams', compact('data'));
+    }
 
 }
+
+
+
+
