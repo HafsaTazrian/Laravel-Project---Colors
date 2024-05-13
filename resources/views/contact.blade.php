@@ -31,12 +31,14 @@
           <div class="col-lg-7 mb-5">
             <div class="contact-form">
               <div id="success"></div>
-              <form name="sentMessage" id="contactForm" novalidate="novalidate">
+              <form action ="{{url('contact_mail')}}" method="post">
+              {{ csrf_field() }}
+
                 <div class="control-group">
                   <input
                     type="text"
                     class="form-control"
-                    id="name"
+                    name="name"
                     placeholder="Your Name"
                     required="required"
                     data-validation-required-message="Please enter your name"
@@ -47,7 +49,7 @@
                   <input
                     type="email"
                     class="form-control"
-                    id="email"
+                    name="email"
                     placeholder="Your Email"
                     required="required"
                     data-validation-required-message="Please enter your email"
@@ -58,7 +60,7 @@
                   <input
                     type="text"
                     class="form-control"
-                    id="subject"
+                    name="subject"
                     placeholder="Subject"
                     required="required"
                     data-validation-required-message="Please enter a subject"
@@ -69,42 +71,34 @@
                   <textarea
                     class="form-control"
                     rows="6"
-                    id="message"
+                    name="message"
                     placeholder="Message"
                     required="required"
                     data-validation-required-message="Please enter your message"
                   ></textarea>
                   <p class="help-block text-danger"></p>
                 </div>
-                <div>
-                  <button
-                    class="btn btn-primary py-2 px-4"
-                    type="submit"
-                    id="sendMessageButton"
-                  >
-                    Send Message
-                  </button>
+                <div class="control-group" >
+                <input
+                   type="submit"
+                   value="Send Message"
+                   style="background-color: #002244; color: #ffffff;"
+                >
+
+                  
                 </div>
               </form>
             </div>
           </div>
           <div class="col-lg-5 mb-5">
             <p>
-              Labore sea amet kasd diam justo amet ut vero justo. Ipsum ut et
-              kasd duo sit, ipsum sea et erat est dolore, magna ipsum et magna
-              elitr. Accusam accusam lorem magna, eos et sed eirmod dolor est
-              eirmod eirmod amet.
+            If you require any further information or assistance,
+             please feel free to contact us here. We're here to help!
+              
+              
+              
             </p>
-            <div class="d-flex">
-              <i
-                class="fa fa-map-marker-alt d-inline-flex align-items-center justify-content-center bg-primary text-secondary rounded-circle"
-                style="width: 45px; height: 45px"
-              ></i>
-              <div class="pl-3">
-                <h5>Address</h5>
-                <p>123 Street, New York, USA</p>
-              </div>
-            </div>
+            
             <div class="d-flex">
               <i
                 class="fa fa-envelope d-inline-flex align-items-center justify-content-center bg-primary text-secondary rounded-circle"
@@ -112,7 +106,7 @@
               ></i>
               <div class="pl-3">
                 <h5>Email</h5>
-                <p>info@example.com</p>
+                <p>hafsa.tazrian@gmail.com.com</p>
               </div>
             </div>
             <div class="d-flex">
@@ -122,27 +116,13 @@
               ></i>
               <div class="pl-3">
                 <h5>Phone</h5>
-                <p>+012 345 67890</p>
+                <p>+880 1677877877</p>
               </div>
             </div>
-            <div class="d-flex">
-              <i
-                class="far fa-clock d-inline-flex align-items-center justify-content-center bg-primary text-secondary rounded-circle"
-                style="width: 45px; height: 45px"
-              ></i>
-              <div class="pl-3">
-                <h5>Opening Hours</h5>
-                <strong>Sunday - Friday:</strong>
-                <p class="m-0">08:00 AM - 05:00 PM</p>
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>
     </div>
     <!-- Contact End -->
-
-
-
-
 @endsection

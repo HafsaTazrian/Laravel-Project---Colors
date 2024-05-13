@@ -9,7 +9,9 @@ use App\Models\PageModel;
 use App\Models\BlogCommentModel;
 use App\Models\BlogCommentReplyModel;
 use App\Models\User;
+use App\Mail\ContactMail;
 use Auth;
+use Mail;
 
 class HomeController extends Controller
 {
@@ -110,6 +112,14 @@ class HomeController extends Controller
         $save->save();
 
         return redirect()->back()->with('success', "Thanks for your reply.");
+    }
+
+    public function contact_mail_send(Request $request)
+    {
+
+         Mail::to('some1somewhere1311@gmail.com')->send(new ContactMail($request));
+        return redirect('contact');
+
     }
 
     public function index() {

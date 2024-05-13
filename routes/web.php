@@ -118,6 +118,9 @@ Route::group(['middleware' => 'adminuser'], function(){ //middleword : fixed wor
    Route::post('blog-comment-submit', [HomeController::class, 'BlogCommentSubmit']);
    //Reply
    Route::post('blog-comment-reply-submit', [HomeController::class, 'BlogCommentReplySubmit']);
+
+   //Contact Mail
+   Route::post('contact_mail', [HomeController::class, 'contact_mail_send']);
     
 });
 
