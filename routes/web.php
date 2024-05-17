@@ -105,6 +105,10 @@ Route::group(['middleware' => 'adminuser'], function(){ //middleword : fixed wor
     Route::get('panel/change-password', [UserController::class, 'ChangePassword']);
     Route::post('panel/change-password', [UserController::class, 'UpdatePassword']);
 
+    //Help
+    Route::get('panel/help', [UserController::class, 'Help']);
+   
+
 
     //Blog- BlogController
     Route::get('panel/blog/list', [BlogController::class, 'blog']);

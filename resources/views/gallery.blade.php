@@ -1,4 +1,81 @@
 @extends('layouts.app')
+@section('style')
+<style>
+.portfolio-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2.5rem;
+}
+
+.portfolio-item .position-relative {
+    position: relative;
+    border-radius: 2rem;
+    box-shadow: 0 0 1rem var(--second-bg-color);
+    overflow: hidden;
+}
+
+.portfolio-item img {
+    width: 100%;
+    transition: 0.5s ease;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.1);
+}
+
+.portfolio-item .portfolio-layer {
+    position: absolute;
+    top: 0;       /* Align top to the container's top */
+    bottom: 0;    /* Align bottom to the container's bottom */
+    left: 0;      /* Align left to the container's left */
+    right: 0;     /* Align right to the container's right */
+    background: linear-gradient(rgba(0,0,0,0.1), #436850);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;  /* Adjust padding as necessary */
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+
+.portfolio-item:hover .portfolio-layer {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.portfolio-layer h4 {
+    font-size: 1.8rem;
+    color:#fff ;
+    margin: 5px 0;
+}
+
+.portfolio-layer p {
+    font-size: 1.2rem;
+    margin: 5px 0;      /* Reduced margin for compact fitting */
+    color: #fbfada;
+    padding: 0 10px;    /* Padding for text wrapping */
+}
+
+.portfolio-layer a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    background: var(--text-color);
+    border-radius: 50%;
+    color: var(--second-bg-color);
+}
+
+.portfolio-layer a i {
+    font-size: 1.8rem;
+}
+
+</style>
+@endsection
 
 @section('content')
 
@@ -34,13 +111,13 @@
                 All
               </li>
               <li class="btn btn-light m-1" data-filter=".first">
-                Playing
+                Painting Workshops
               </li>
               <li class="btn btn-light m-1" data-filter=".second">
-                Drawing
+                Photography Workshops
               </li>
               <li class="btn btn-light m-1" data-filter=".third">
-                Reading
+                Sculpting Workshop
               </li>
             </ul>
           </div>
@@ -48,75 +125,83 @@
         <div class="row portfolio-container">
           <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
             <div class="position-relative overflow-hidden mb-2">
-              <img class="img-fluid w-100" src="{{ url('front/img/portfolio-1.jpg') }}" alt="" />
-              <div
-                class="portfolio-btn bg-primary d-flex align-items-center justify-content-center"
-              >
-                <a href="{{ url('front/img/portfolio-1.jpg') }}" data-lightbox="portfolio">
-                  <i class="fa fa-plus text-white" style="font-size: 60px"></i>
-                </a>
+              <img class="img-fluid w-100" src="{{ url('/colorsImages/workshop1.jpeg') }}" alt="" />
+              <div class="portfolio-layer">
+              <h4>Painting Workshop I </h4>
+                    <p>One of the memeorable moments from our first Painting Workshop! Join us in our next workshops to learn and gather fond memories!!</p>
+                </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4 portfolio-item third">
+            <div class="position-relative overflow-hidden mb-2">
+              <img class="img-fluid w-100" src="{{ url('colorsImages/sculpting2.jpeg') }}" alt="" />
+              <div class="portfolio-layer">
+              <h4>Sculpting Workshop I </h4>
+                    <p>One of the memeorable moments from our first Sculpting Workshop! Join us in our next workshops to learn and gather fond memories!!</p>
               </div>
             </div>
           </div>
           <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
             <div class="position-relative overflow-hidden mb-2">
-              <img class="img-fluid w-100" src="{{ url('front/img/portfolio-2.jpg') }}" alt="" />
-              <div
-                class="portfolio-btn bg-primary d-flex align-items-center justify-content-center"
-              >
-                <a href="{{ url('front/img/portfolio-2.jpg') }}" data-lightbox="portfolio">
-                  <i class="fa fa-plus text-white" style="font-size: 60px"></i>
-                </a>
-              </div>
+              <img class="img-fluid w-100" src="{{ url('colorsImages/photography.jpeg') }}" alt="" />
+              <div class="portfolio-layer">
+              <h4>Photography Workshop I</h4>
+                    <p>One of the memeorable moments from our first Photography Workshop! Join us in our next workshops to learn and gather fond memories!!</p>
+                  </div>
             </div>
           </div>
           <div class="col-lg-4 col-md-6 mb-4 portfolio-item third">
             <div class="position-relative overflow-hidden mb-2">
-              <img class="img-fluid w-100" src="{{ url('front/img/portfolio-3.jpg') }}" alt="" />
-              <div
-                class="portfolio-btn bg-primary d-flex align-items-center justify-content-center"
-              >
-                <a href="{{ url('front/img/portfolio-3.jpg') }}" data-lightbox="portfolio">
-                  <i class="fa fa-plus text-white" style="font-size: 60px"></i>
-                </a>
-              </div>
+              <img class="img-fluid w-100" src="{{ url('colorsImages/sculpting.jpeg') }}" alt="" />
+              <div class="portfolio-layer">
+              <h4>Sculpting Workshop I </h4>
+                    <p>One of the memeorable moments from our first Sculpting Workshop! Join us in our next workshops to learn and gather fond memories!!</p>
+                </div>
             </div>
           </div>
           <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
             <div class="position-relative overflow-hidden mb-2">
-              <img class="img-fluid w-100" src="{{ url('front/img/portfolio-4.jpg') }}" alt="" />
-              <div
-                class="portfolio-btn bg-primary d-flex align-items-center justify-content-center"
-              >
-                <a href="{{ url('front/img/portfolio-4.jpg') }}" data-lightbox="portfolio">
-                  <i class="fa fa-plus text-white" style="font-size: 60px"></i>
-                </a>
-              </div>
+              <img class="img-fluid w-100" src="{{ url('/colorsImages/workshop4.jpeg') }}" alt="" />
+              <div class="portfolio-layer">
+              <h4>Painting Workshop II</h4>
+                    <p>One of the memeorable moments from our second Painting Workshop! Join us in our next workshops to learn and gather fond memories!!</p>
+                </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
+            <div class="position-relative overflow-hidden mb-2">
+              <img class="img-fluid w-100" src="{{ url('/colorsImages/workshop2.jpeg') }}" alt="" />
+              <div class="portfolio-layer">
+              <h4>Painting Workshop II</h4>
+                    <p>One of the memeorable moments from our second Painting Workshop! Join us in our next workshops to learn and gather fond memories!!</p>
+                </div>
             </div>
           </div>
           <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
             <div class="position-relative overflow-hidden mb-2">
-              <img class="img-fluid w-100" src="{{ url('front/img/portfolio-5.jpg') }}" alt="" />
-              <div
-                class="portfolio-btn bg-primary d-flex align-items-center justify-content-center"
-              >
-                <a href="{{ url('front/img/portfolio-5.jpg') }}" data-lightbox="portfolio">
-                  <i class="fa fa-plus text-white" style="font-size: 60px"></i>
-                </a>
-              </div>
+              <img class="img-fluid w-100" src="{{ url('colorsImages/photography3.jpeg') }}" alt="" />
+              <div class="portfolio-layer">
+              <h4>Photography Workshop II </h4>
+                    <p>One of the memeorable moments from our second Photography Workshop! Join us in our next workshops to learn and gather fond memories!!</p>
+                </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 mb-4 portfolio-item third">
+          <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
             <div class="position-relative overflow-hidden mb-2">
-              <img class="img-fluid w-100" src="{{ url('front/img/portfolio-6.jpg') }}" alt="" />
-              <div
-                class="portfolio-btn bg-primary d-flex align-items-center justify-content-center"
-              >
-                <a href="{{ url('front/img/portfolio-6.jpg') }}" data-lightbox="portfolio">
-                  <i class="fa fa-plus text-white" style="font-size: 60px"></i>
-                </a>
-              </div>
+              <img class="img-fluid w-100" src="{{ url('colorsImages/photography2.jpeg') }}" alt="" />
+              <div class="portfolio-layer">
+              <h4>Photography Workshop II </h4>
+                    <p>One of the memeorable moments from our second Photography Workshop! Join us in our next workshops to learn and gather fond memories!!</p>
+                </div>
             </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
+            <div class="position-relative overflow-hidden mb-2">
+              <img class="img-fluid w-100" src="{{ url('/colorsImages/workshop3.jpeg') }}" alt="" />
+              <div class="portfolio-layer">
+              <h4>Painting Workshop III</h4>
+                    <p>One of the memeorable moments from our third Painting Workshop! Join us in our next workshops to learn and gather fond memories!!</p>
+                </div>
           </div>
         </div>
       </div>

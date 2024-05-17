@@ -17,6 +17,11 @@ class BlogModel extends Model
         return self::find($id);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     static public function getRecordSlug($slug) {
         return  self::select('blog.*', 'users.name as user_name', 'category.name as category_name', 'category.slug as category_slug')
             ->join('users', 'users.id', '=', 'blog.user_id')
@@ -107,7 +112,8 @@ class BlogModel extends Model
     static public function getRecord(){
         $return = self::select('blog.*', 'users.name as user_name', 'category.name as category_name', 'category.slug as category_slug')
                     ->join('users', 'users.id', '=', 'blog.user_id')
-                    ->join('category', 'category.id', '=', 'blog.category_id');
+                    ->join('category', 'category.id', '=', 'blog.category_id')
+                    ->with('user');
 
                     if(!empty(Auth::check()) && Auth::user()->is_admin != 1){
                         $return = $return->where('blog.user_id', '=', Auth::user()->id );

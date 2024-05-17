@@ -37,6 +37,9 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ url('front/css/style.css') }}" rel="stylesheet" />
+
+    @yield('style')
+
   </head>
 
   <body>

@@ -18,7 +18,7 @@
               <p class="mr-3"><i class="fa fa-comments" style="color: #436850;"></i> {{ $getRecord->getCommentCount() }} </p>
             </div>
           </div>
-          <div class="mb-5">
+          <div class="mb-5" style="color: #000;">
             @if(!empty($getRecord->getImage()))
             <img style="max-height: 574px; object-fit:cover;"
               class="img-fluid rounded w-100 mb-4"
@@ -143,17 +143,16 @@
           <!-- Author Bio -->
           <div class="d-flex flex-column text-center bg-primary rounded mb-5 py-5 px-4"  >
             <img
-              src="{{ Auth::user()->getProfile() }}"
+              src="{{  $getRecord->user->getProfile() }}"
               class="img-fluid rounded-circle mx-auto mb-3"
               style="width: 80px; height: 80px;"
             />
-            <h3 class="text-secondary mb-3">{{ Auth::user()->name }}</h3>
+            <h3 class="text-secondary mb-3">{{ $getRecord->user_name }}</h3>
             <p style="color: #adbc9f;" >
-            {{ Auth::user()->profile_identity }}
+            {{ $getRecord->user->profile_identity }}
             </p>
-            <p style="font-size: 70%;"class="text-white m-0">
-            {!! strip_tags(Str::substr(Auth::user()->profile_description,0,200)) !!}
-            
+            <p style="font-size: 80%; margin-top: 1rem;"class="text-white m-0">
+              {!! strip_tags(Str::substr($getRecord->user->profile_description, 0, 200)) !!}
             </p>
           </div>
 

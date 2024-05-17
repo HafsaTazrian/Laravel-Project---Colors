@@ -82,7 +82,7 @@
                 <input
                    type="submit"
                    value="Send Message"
-                   style="background-color: #002244; color: #ffffff;"
+                   style="background-color: #436850; color: #fafbfa;"
                 >
 
                   
@@ -94,11 +94,18 @@
             <p>
             If you require any further information or assistance,
              please feel free to contact us here. We're here to help!
-              
-              
-              
+
             </p>
-            
+            <div class="d-flex">
+              <i
+                class="fa fa-map-marker-alt d-inline-flex align-items-center justify-content-center bg-primary text-secondary rounded-circle"
+                style="width: 45px; height: 45px"
+              ></i>
+              <div class="pl-3">
+                <h5>Address</h5>
+                <p>KUET, Fulbarigate, Khulna</p>
+              </div>
+            </div>
             <div class="d-flex">
               <i
                 class="fa fa-envelope d-inline-flex align-items-center justify-content-center bg-primary text-secondary rounded-circle"

@@ -19,6 +19,11 @@ class UserController extends Controller
         return view('backend.user.add');
     }
 
+    public function Help()
+    {
+        return view('backend.profile.help');
+    }
+
     public function insert_user(Request $request){
         request()->validate([
             'name' =>'required',
