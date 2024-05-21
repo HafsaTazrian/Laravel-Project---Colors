@@ -12,655 +12,317 @@
   <section class="section dashboard">
       <div class="row">
       @include('layouts._message')
-<!--
-Left side columns
-        <div class="col-lg-8">
-          <div class="row">
 
-Sales Card
-            <div class="col-xxl-4 col-md-6">
-              <div class="card info-card sales-card">
+  <!--Left side columns -->
+       
 
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
+    <!-- Blog Count Card -->
+<div class="col-xxl-4 col-md-6">
+    <div class="card info-card sales-card">
+        <div class="filter">
+            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                    <h6>Filter</h6>
+                </li>
+                <!-- Display static counts directly in the dropdown menu -->
+                <li><a class="dropdown-item" href="#">Today: <strong>{{ $todayBlogs }}</strong></a></li>
+                <li><a class="dropdown-item" href="#">This Month: <strong>{{ $thisMonthBlogs }}</strong></a></li>
+                <li><a class="dropdown-item" href="#">This Year: <strong>{{ $thisYearBlogs }}</strong></a></li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Blog Posts <span id="timePeriod">| Total</span></h5>
+            <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="bi bi-journals"></i>
                 </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Sales <span>| Today</span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-cart"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>145</h6>
-                      <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
-
-                    </div>
-                  </div>
+                <div class="ps-3">
+                    <h6 id="blogCount">{{ $totalBlogs }}</h6>
+                    <span class="text-muted small pt-2">posts added</span>
                 </div>
-
-              </div>
             </div>
-End Sales Card
+        </div>
+    </div>
+</div>
+<!-- End Blog Count Card -->
 
-Revenue Card
-            <div class="col-xxl-4 col-md-6">
-              <div class="card info-card revenue-card">
 
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
 
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
+      <!-- Blog Comment Count Card -->
+      <div class="col-xxl-4 col-md-6">
+      <div class="card info-card sales-card" style="background-color: #fbfada;">
+        <div class="filter">
+            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                    <h6>Filter</h6>
+                </li>
+                <!-- Display static counts directly in the dropdown menu -->
+                <li><a class="dropdown-item" href="#">Today: <strong>{{ $todayComments }}</strong></a></li>
+                <li><a class="dropdown-item" href="#">This Month: <strong>{{ $thisMonthComments }}</strong></a></li>
+                <li><a class="dropdown-item" href="#">This Year: <strong>{{ $thisYearComments }}</strong></a></li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Comments<span id="timePeriod">| Total</span></h5>
+            <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                <i class='bx bx-chat'></i>
                 </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Revenue <span>| This Month</span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-currency-dollar"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>$3,264</h6>
-                      <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
-
-                    </div>
-                  </div>
+                <div class="ps-3">
+                    <h6 id="blogCount">{{ $totalComments }}</h6>
+                    <span class="text-muted small pt-2">comments</span>
                 </div>
-
-              </div>
             </div>
-End Revenue Card
+        </div>
+      </div>
+      </div>
+      <!-- End Blog Comment count Card -->
 
-Customers Card
-            <div class="col-xxl-4 col-xl-12">
-
-              <div class="card info-card customers-card">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
+      <!-- Blog Writer Count Card -->
+    <div class="col-xxl-4 col-md-6">
+    <div class="card info-card sales-card" style="background-color: #fbfada;">
+        <div class="filter">
+            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                    <h6>Filter</h6>
+                </li>
+                <!-- Display static counts directly in the dropdown menu -->
+                <li><a class="dropdown-item" href="#">Admin: <strong>{{ $totalAdminWriters }}</strong></a></li>
+                <li><a class="dropdown-item" href="#">User: <strong>{{ $totalUserWriters }}</strong></a></li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Blog Writers <span id="timePeriod">| Total</span></h5>
+            <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                <i class="bi bi-people"></i>
                 </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Customers <span>| This Year</span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-people"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>1244</h6>
-                      <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
-
-                    </div>
-                  </div>
-
+                <div class="ps-3">
+                    <h6 id="blogCount">{{ $totalWriters }}</h6>
+                    <span class="text-muted small pt-2">writers</span>
                 </div>
-              </div>
-
             </div>
-End Customers Card
+        </div>
+    </div>
+    </div>
+    <!-- End Blog Count Card -->
 
-Reports
+      <!--Reports-->
             <div class="col-12">
               <div class="card">
+                <div class="card-body" style="background-color: #fbfada;">
+                  <h5 class="card-title">Reports <span>All Time</span></h5>
 
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Reports <span>/Today</span></h5>
-
-Line Chart
+      <!--Line Chart-->
                   <div id="reportsChart"></div>
 
                   <script>
-                    document.addEventListener("DOMContentLoaded", () => {
-                      new ApexCharts(document.querySelector("#reportsChart"), {
-                        series: [{
-                          name: 'Sales',
-                          data: [31, 40, 28, 51, 42, 82, 56],
-                        }, {
-                          name: 'Revenue',
-                          data: [11, 32, 45, 32, 34, 52, 41]
-                        }, {
-                          name: 'Customers',
-                          data: [15, 11, 32, 18, 9, 24, 11]
-                        }],
-                        chart: {
-                          height: 350,
-                          type: 'area',
-                          toolbar: {
-                            show: false
-                          },
-                        },
-                        markers: {
-                          size: 4
-                        },
-                        colors: ['#4154f1', '#2eca6a', '#ff771d'],
-                        fill: {
-                          type: "gradient",
-                          gradient: {
-                            shadeIntensity: 1,
-                            opacityFrom: 0.3,
-                            opacityTo: 0.4,
-                            stops: [0, 90, 100]
-                          }
-                        },
-                        dataLabels: {
-                          enabled: false
-                        },
-                        stroke: {
-                          curve: 'smooth',
-                          width: 2
-                        },
-                        xaxis: {
-                          type: 'datetime',
-                          categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
-                        },
+                  document.addEventListener("DOMContentLoaded", () => {
+                  var options = {
+                  series: [{
+                    name: 'Blogs',
+                    data: [{{ $todayBlogs }}, {{ $thisMonthBlogs }}, {{ $thisYearBlogs }}, {{ $totalBlogs }}]
+                  }, {
+                    name: 'Comments',
+                    data: [{{ $todayComments }}, {{ $thisMonthComments }}, {{ $thisYearComments }}, {{ $totalComments }}]
+                  }, {
+                    name: 'Writers',
+                    data: [{{ $totalUserWriters }}, {{ $totalAdminWriters }}, {{ $totalWriters }}]
+                  }],
+                  chart: {
+                    type: 'area',
+                    height: 350,
+                    toolbar: {
+                      show: false
+                    },
+                    zoom: {
+                      enabled: false
+                    }
+                  },
+                  dataLabels: {
+                    enabled: false
+                  },
+                  stroke: {
+                    curve: 'smooth'
+                  },
+                  fill: {
+                    type: 'gradient',
+                    gradient: {
+                      shadeIntensity: 1,
+                      type: 'vertical',
+                      opacityFrom: 0.7,
+                      opacityTo: 0,
+                      stops: [0, 100]
+                    }
+                  },
+                  xaxis: {
+                    categories: ['Today', 'This Month', 'This Year', 'Total']
+                  },
+                  tooltip: {
+                    x: {
+                      formatter: function(val) {
+                        return val;
+                      }
+                    },
+                    y: {
+                      formatter: function (val) {
+                        return val;
+                      }   
+                    },
+                    marker: {
+                      show: false
+                    } 
+                  },
+                  legend: {
+                    position: 'top',
+                    horizontalAlign: 'right',
+                    floating: true,
+                    offsetY: -25,
+                    offsetX: -5
+                  }
+               };
+
+              var chart = new ApexCharts(document.querySelector("#reportsChart"), options);
+              chart.render();
+            });
+          </script>
+
+      <!--End Line Chart-->
+
+                </div>
+
+              </div>
+            </div>
+      <!--End Reports-->
+          
+  <!--End Left side columns-->
+
+  <!--Row for Budget Report and Website Traffic-->
+<div class="row">
+    <!-- Blog User Report -->
+<div class="col-lg-6">
+    <div class="card">
+        <div class="card-body pb-0" style="background-color: #fbfada;">
+            <h5 class="card-title">User Blogging Activity <span>| All time</span></h5>
+            <div id="userBlogChart" style="min-height: 400px;" class="echart"></div>
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    const chart = echarts.init(document.querySelector("#userBlogChart"));
+                    chart.setOption({
                         tooltip: {
-                          x: {
-                            format: 'dd/MM/yy HH:mm'
-                          },
-                        }
-                      }).render();
+                            trigger: 'axis',
+                            axisPointer: {            // Use line pointer for tooltip
+                                type: 'shadow'        
+                            }
+                        },
+                        xAxis: {
+                            type: 'category',
+                            data: @json($usersWithBlogCount->pluck('name'))
+                        },
+                        yAxis: {
+                            type: 'value'
+                        },
+                        series: [{
+                            data: @json($usersWithBlogCount->pluck('value')),
+                            type: 'bar'
+                        }]
                     });
-                  </script>
-End Line Chart
-
-                </div>
-
-              </div>
-            </div>
-End Reports
-
-Recent Sales
-            <div class="col-12">
-              <div class="card recent-sales overflow-auto">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Recent Sales <span>| Today</span></h5>
-
-                  <table class="table table-borderless datatable">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Customer</th>
-                        <th scope="col">Product</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row"><a href="#">#2457</a></th>
-                        <td>Brandon Jacob</td>
-                        <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                        <td>$64</td>
-                        <td><span class="badge bg-success">Approved</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2147</a></th>
-                        <td>Bridie Kessler</td>
-                        <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a></td>
-                        <td>$47</td>
-                        <td><span class="badge bg-warning">Pending</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2049</a></th>
-                        <td>Ashleigh Langosh</td>
-                        <td><a href="#" class="text-primary">At recusandae consectetur</a></td>
-                        <td>$147</td>
-                        <td><span class="badge bg-success">Approved</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2644</a></th>
-                        <td>Angus Grady</td>
-                        <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
-                        <td>$67</td>
-                        <td><span class="badge bg-danger">Rejected</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2644</a></th>
-                        <td>Raheem Lehner</td>
-                        <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                        <td>$165</td>
-                        <td><span class="badge bg-success">Approved</span></td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-                </div>
-
-              </div>
-            </div>
-End Recent Sales
-
-Top Selling
-            <div class="col-12">
-              <div class="card top-selling overflow-auto">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body pb-0">
-                  <h5 class="card-title">Top Selling <span>| Today</span></h5>
-
-                  <table class="table table-borderless">
-                    <thead>
-                      <tr>
-                        <th scope="col">Preview</th>
-                        <th scope="col">Product</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Sold</th>
-                        <th scope="col">Revenue</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="{{ url('assets/img/product-1.jpg') }}" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Ut inventore ipsa voluptas nulla</a></td>
-                        <td>$64</td>
-                        <td class="fw-bold">124</td>
-                        <td>$5,828</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="{{ url('assets/img/product-2.jpg') }}" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Exercitationem similique doloremque</a></td>
-                        <td>$46</td>
-                        <td class="fw-bold">98</td>
-                        <td>$4,508</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="{{ url('assets/img/product-3.jpg') }}" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Doloribus nisi exercitationem</a></td>
-                        <td>$59</td>
-                        <td class="fw-bold">74</td>
-                        <td>$4,366</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="{{ url('assets/img/product-4.jpg') }}" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Officiis quaerat sint rerum error</a></td>
-                        <td>$32</td>
-                        <td class="fw-bold">63</td>
-                        <td>$2,016</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="{{ url('assets/img/product-5.jpg') }}" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Sit unde debitis delectus repellendus</a></td>
-                        <td>$79</td>
-                        <td class="fw-bold">41</td>
-                        <td>$3,239</td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-                </div>
-
-              </div>
-            </div>
-End Top Selling
-
-          </div>
-        </div>
-End Left side columns
-
-Right side columns
-        <div class="col-lg-4">
-
-Recent Activity
-          <div class="card">
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
-
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
-
-            <div class="card-body">
-              <h5 class="card-title">Recent Activity <span>| Today</span></h5>
-
-              <div class="activity">
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">32 min</div>
-                  <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
-                  <div class="activity-content">
-                    Quia quae rerum <a href="#" class="fw-bold text-dark">explicabo officiis</a> beatae
-                  </div>
-                </div>
-End activity item
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">56 min</div>
-                  <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
-                  <div class="activity-content">
-                    Voluptatem blanditiis blanditiis eveniet
-                  </div>
-                </div>
-End activity item
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">2 hrs</div>
-                  <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
-                  <div class="activity-content">
-                    Voluptates corrupti molestias voluptatem
-                  </div>
-                </div>
-End activity item
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">1 day</div>
-                  <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
-                  <div class="activity-content">
-                    Tempore autem saepe <a href="#" class="fw-bold text-dark">occaecati voluptatem</a> tempore
-                  </div>
-                </div>
-End activity item
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">2 days</div>
-                  <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
-                  <div class="activity-content">
-                    Est sit eum reiciendis exercitationem
-                  </div>
-                </div>
-End activity item
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">4 weeks</div>
-                  <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
-                  <div class="activity-content">
-                    Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
-                  </div>
-                </div>
-End activity item
-
-              </div>
-
-            </div>
-          </div>
-End Recent Activity
-
-Budget Report
-          <div class="card">
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
-
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
-
-            <div class="card-body pb-0">
-              <h5 class="card-title">Budget Report <span>| This Month</span></h5>
-
-              <div id="budgetChart" style="min-height: 400px;" class="echart"></div>
-
-              <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  var budgetChart = echarts.init(document.querySelector("#budgetChart")).setOption({
-                    legend: {
-                      data: ['Allocated Budget', 'Actual Spending']
-                    },
-                    radar: {
-                      // shape: 'circle',
-                      indicator: [{
-                          name: 'Sales',
-                          max: 6500
-                        },
-                        {
-                          name: 'Administration',
-                          max: 16000
-                        },
-                        {
-                          name: 'Information Technology',
-                          max: 30000
-                        },
-                        {
-                          name: 'Customer Support',
-                          max: 38000
-                        },
-                        {
-                          name: 'Development',
-                          max: 52000
-                        },
-                        {
-                          name: 'Marketing',
-                          max: 25000
-                        }
-                      ]
-                    },
-                    series: [{
-                      name: 'Budget vs spending',
-                      type: 'radar',
-                      data: [{
-                          value: [4200, 3000, 20000, 35000, 50000, 18000],
-                          name: 'Allocated Budget'
-                        },
-                        {
-                          value: [5000, 14000, 28000, 26000, 42000, 21000],
-                          name: 'Actual Spending'
-                        }
-                      ]
-                    }]
-                  });
                 });
-              </script>
-
-            </div>
-          </div>
-End Budget Report
-
-Website Traffic
-          <div class="card">
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
-
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
-
-            <div class="card-body pb-0">
-              <h5 class="card-title">Website Traffic <span>| Today</span></h5>
-
-              <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
-
-              <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  echarts.init(document.querySelector("#trafficChart")).setOption({
-                    tooltip: {
-                      trigger: 'item'
-                    },
-                    legend: {
-                      top: '5%',
-                      left: 'center'
-                    },
-                    series: [{
-                      name: 'Access From',
-                      type: 'pie',
-                      radius: ['40%', '70%'],
-                      avoidLabelOverlap: false,
-                      label: {
-                        show: false,
-                        position: 'center'
-                      },
-                      emphasis: {
-                        label: {
-                          show: true,
-                          fontSize: '18',
-                          fontWeight: 'bold'
-                        }
-                      },
-                      labelLine: {
-                        show: false
-                      },
-                      data: [{
-                          value: 1048,
-                          name: 'Search Engine'
-                        },
-                        {
-                          value: 735,
-                          name: 'Direct'
-                        },
-                        {
-                          value: 580,
-                          name: 'Email'
-                        },
-                        {
-                          value: 484,
-                          name: 'Union Ads'
-                        },
-                        {
-                          value: 300,
-                          name: 'Video Ads'
-                        }
-                      ]
-                    }]
-                  });
-                });
-              </script>
-
-            </div>
-          </div>
-End Website Traffic
-
-News & Updates Traffic          
-          <div class="card">
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
-
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
-
-            <div class="card-body pb-0">
-              <h5 class="card-title">News &amp; Updates <span>| Today</span></h5>
-
-              <div class="news">
-                <div class="post-item clearfix">
-                  <img src="{{ url('assets/img/news-1.jpg') }}" alt="">
-                  <h4><a href="#">Nihil blanditiis at in nihil autem</a></h4>
-                  <p>Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum...</p>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="{{ url('assets/img/news-2.jpg') }}" alt="">
-                  <h4><a href="#">Quidem autem et impedit</a></h4>
-                  <p>Illo nemo neque maiores vitae officiis cum eum turos elan dries werona nande...</p>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="{{ url('assets/img/news-3.jpg') }}" alt="">
-                  <h4><a href="#">Id quia et et ut maxime similique occaecati ut</a></h4>
-                  <p>Fugiat voluptas vero eaque accusantium eos. Consequuntur sed ipsam et totam...</p>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="{{ url('assets/img/news-4.jpg') }}" alt="">
-                  <h4><a href="#">Laborum corporis quo dara net para</a></h4>
-                  <p>Qui enim quia optio. Eligendi aut asperiores enim repellendusvel rerum cuder...</p>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="{{ url('assets/img/news-5.jpg') }}" alt="">
-                  <h4><a href="#">Et dolores corrupti quae illo quod dolor</a></h4>
-                  <p>Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos eius...</p>
-                </div>
-
-              </div>
- End sidebar recent posts             
-
-            </div>
-          </div>
-End News & Updates
-
+            </script>
         </div>
-End Right side columns
+    </div>
+</div>
 
-      </div>-->
+
+    <!-- Category Pie chart-->
+    <div class="col-lg-6">
+        <div class="card">
+            
+            <div class="card-body pb-0" style="background-color: #fbfada;">
+                <h5 class="card-title">Categories<span>| blog wise</span></h5>
+                <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
+                <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                // Convert PHP array to JavaScript object safely using JSON.stringify in PHP
+                const categoryData = JSON.parse('<?php echo addslashes(json_encode($categoryData)); ?>');
+
+                const chart = echarts.init(document.querySelector("#trafficChart"));  // Ensure this selector matches your div id
+                chart.setOption({
+        tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b}: {c} ({d}%)'
+        },
+        color: [
+            '#a8d5ba',  // soft mint
+            '#ffd1dc',  // pastel pink
+            '#d3f3ee',  // light aqua
+            '#f9d5e5',  // light rose pink
+            '#7db5a3',  // muted sea green
+            '#a4bdfc',  // pastel blue
+            '#f7cd72',  // pastel yellow
+            '#c9e4de',  // very pale (mostly white) cyan
+            '#b7e2c7',  // pale robin egg blue
+            '#ff9f80',  // pastel coral
+            '#68b4a1',  // soft teal
+            '#b79fcb',  // pastel purple
+            '#30ba8f',  // turquoise green
+            '#f7cabf',  // pastel peach
+            '#d3a4f9',  // pastel violet
+            '#78d6ac',  // pastel sea green
+            '#ffccb6',  // pastel orange
+            '#a3c1ad',  // pastel sage
+            '#c6c1f0',  // pastel periwinkle
+            '#eba3a3'   // pastel red
+        ], 
+        legend: {
+            orient: 'horizontal',
+            top: 'top',            // Position at the top
+            left: 'center',  
+            data: categoryData.map(item => item.name)
+        },
+        series: [{
+            name: 'Blog Distribution',
+            type: 'pie',
+            radius: ['50%', '70%'],
+            center: ['50%', '60%'],
+            avoidLabelOverlap: false,
+            label: {
+                show: false,
+                position: 'center'
+            },
+            emphasis: {
+                label: {
+                    show: true,
+                    fontSize: '18',
+                    fontWeight: 'bold'
+                }
+            },
+            labelLine: {
+                show: false
+            },
+            data: categoryData
+        }]
+    });
+                });
+                </script>
+            </div>
+        </div>
+
+        <!-- End Category Pie Chart -->
+    </div>
+    </div>
+    <!-- End Row -->
+
+
+      </div>
+              
     </section> 
     
+@endsection
+
+@section('script')
+
 @endsection

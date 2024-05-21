@@ -70,4 +70,14 @@ class CategoryModel extends Model
                 ->get();
     }
 
+    public static function getCategoriesWithBlogCount()
+    {
+    return self::select('category.id', 'category.name', \DB::raw('COUNT(blog.id) as blog_count'))
+        ->leftJoin('blog', 'blog.category_id', '=', 'category.id')
+        ->where('blog.is_delete', '=', 0)
+        ->groupBy('category.id', 'category.name')
+        ->get();
+    }
+
+
 }

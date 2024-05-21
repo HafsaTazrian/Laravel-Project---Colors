@@ -4,8 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB; 
 use Auth;
 use Request;
+use Carbon\Carbon;
 
 class BlogModel extends Model
 {
@@ -185,5 +187,92 @@ class BlogModel extends Model
     public function getCommentCount(){
         return $this->hasMany(BlogCommentModel::class, 'blog_id')->count();
     }
+
+    public static function getTotalBlogsCount()
+    {
+        return self::count();
+    }
+
+    public static function getTodayBlogsCount()
+    {
+        return self::whereDate('created_at', Carbon::today())->count();
+    }
+
+    public static function getThisMonthBlogsCount()
+    {
+        return self::whereMonth('created_at', Carbon::now()->month)
+                   ->whereYear('created_at', Carbon::now()->year)
+                   ->count();
+    }
+
+    public static function getThisYearBlogsCount()
+    {
+        return self::whereYear('created_at', Carbon::now()->year)->count();
+    }
+    public static function getTotalUniqueBlogWritersCount()
+    {
+        // Use a query to count distinct user_ids in the blog table.
+        $query = DB::table('blog')
+                   ->distinct('user_id')
+                   ->where('blog.is_delete', '=', 0);  // Assuming 'is_delete' flags deleted blogs
+
+        $count = $query->count('user_id');  // Count distinct user_ids
+        return $count;
+    }
+    public static function getTotalUniqueAdminBlogWritersCount()
+    {
+        // Start by joining the blog table with the users table to filter by user type
+        $query = DB::table('blog')
+                   ->join('users', 'users.id', '=', 'blog.user_id')
+                   ->where('users.is_admin', '=', 1)  // Filter to include only admins
+                   ->where('blog.is_delete', '=', 0)  // Ensure the blog is not deleted
+                   ->distinct('user_id');
+
+        // Count distinct user_ids who are admins and have written at least one blog
+        $count = $query->count('user_id');
+        return $count;
+    }
+    public static function getTotalUniqueUserBlogWritersCount()
+    {
+        // Start by joining the blog table with the users table to filter by user type
+        $query = DB::table('blog')
+                   ->join('users', 'users.id', '=', 'blog.user_id')
+                   ->where('users.is_admin', '=', 0)  // Filter to include only admins
+                   ->where('blog.is_delete', '=', 0)  // Ensure the blog is not deleted
+                   ->distinct('user_id');
+
+        // Count distinct user_ids who are admins and have written at least one blog
+        $count = $query->count('user_id');
+        return $count;
+    }
+
+    public static function getTotalBlogsCountByUser($userId)
+    {
+        return self::where('user_id', $userId)->count();
+    }
+
+    public static function getTodayBlogsCountByUser($userId)
+    {
+        return self::where('user_id', $userId)
+               ->whereDate('created_at', Carbon::today())
+               ->count();
+    }
+
+    public static function getThisMonthBlogsCountByUser($userId)
+    {
+        return self::where('user_id', $userId)
+               ->whereMonth('created_at', Carbon::now()->month)
+               ->whereYear('created_at', Carbon::now()->year)
+               ->count();
+    }
+
+    public static function getThisYearBlogsCountByUser($userId)
+    {
+        return self::where('user_id', $userId)
+               ->whereYear('created_at', Carbon::now()->year)
+               ->count();
+    }
+
+
 
 }

@@ -97,7 +97,12 @@ class AuthController extends Controller
 
             
             if (!empty(Auth::user()->email_verified_at)){
-                return redirect('panel/dashboard');
+                // Redirect based on whether the user is an admin or not
+                if (Auth::user()->is_admin) {
+                    return redirect('panel/dashboard');
+                } else {
+                    return redirect('panel/dashboard_user');
+            }
             }
             else{
                 $user_id = Auth::user()->id;

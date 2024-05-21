@@ -53,6 +53,7 @@ Route::post('/logout', [AuthController::class, 'loggedout'])->name('logout');
 //only admin access
 Route::group(['middleware' => 'admin'], function(){
 
+    Route::get('panel/dashboard', [DashboardController::class, 'dashboard']);
 
     //User panel:
     //admin panel - user: UserController
@@ -93,10 +94,6 @@ Route::group(['middleware' => 'admin'], function(){
 //both admin and user access
 Route::group(['middleware' => 'adminuser'], function(){ //middleword : fixed word, adminuser: middleware name
 
-    
-    //admin dashboard panel - DashboardController
-    Route::get('panel/dashboard', [DashboardController::class, 'dashboard']);
-
     //Change Password - UserController
     Route::get('panel/account-setting', [UserController::class, 'AccountSetting']);
     Route::post('panel/account-setting', [UserController::class, 'UpdateAccountSetting']);
@@ -126,6 +123,10 @@ Route::group(['middleware' => 'adminuser'], function(){ //middleword : fixed wor
    //Contact Mail
    Route::post('contact_mail', [HomeController::class, 'contact_mail_send']);
     
+});
+
+Route::group(['middleware' => 'user'], function() {
+    Route::get('/panel/dashboard_user', [DashboardController::class, 'dashboard_user']);
 });
 
 

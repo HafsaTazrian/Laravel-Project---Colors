@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\BlogModel;
 
 class User extends Authenticatable
 {
@@ -82,5 +83,9 @@ class User extends Authenticatable
         else{
             return url('assets/img/profile-img.jpg');
         }
+    }
+    public function blogs()
+    {
+        return $this->hasMany(BlogModel::class);
     }
 }

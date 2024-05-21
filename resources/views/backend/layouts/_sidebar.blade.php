@@ -2,16 +2,24 @@
 <aside id="sidebar" class="sidebar" style="background-color: #adbc9f;">
 
 <ul class="sidebar-nav" id="sidebar-nav" style="background-color: #adbc9f;" >
+  
+  @if(Auth::user()->is_admin == 0)
+  <li class="nav-item">
+    <a class="nav-link @if(Request::segment(2) != 'dashboard') collapsed @endif  " href="{{ url('panel/dashboard_user') }}" style="background-color: #adbc9f;">
+      <i class="bi bi-grid" ></i>
+      <span >Dashboard</span>
+    </a>
+  </li><!-- End Dashboard Nav -->
+  @endif
 
+<!-- Don't need to show user and category menu for user login, so condition made -->
+  @if(Auth::user()->is_admin == 1)
   <li class="nav-item">
     <a class="nav-link @if(Request::segment(2) != 'dashboard') collapsed @endif  " href="{{ url('panel/dashboard') }}" style="background-color: #adbc9f;">
       <i class="bi bi-grid" ></i>
       <span >Dashboard</span>
     </a>
   </li><!-- End Dashboard Nav -->
-
-<!-- Don't need to show user and category menu for user login, so condition made -->
-  @if(Auth::user()->is_admin == 1)
   <li class="nav-item">
     <a class="nav-link @if(Request::segment(2) != 'user') collapsed @endif " href="{{ url('panel/user/list') }}" style="background-color: #adbc9f;">
       <i class="bi bi-person" ></i>
