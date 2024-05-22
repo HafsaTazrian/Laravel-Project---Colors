@@ -48,6 +48,12 @@
           <form action="{{ route('logout') }}" method="POST" style="display: inline;">
            @csrf
             <button type="submit" class="btn btn-primary px-4">Logout</button>
+            @if(Auth::user()->is_admin == 0)
+            <a href="{{ url('panel/dashboard_user') }}" class="btn btn-primary px-4" style="margin-left: 8px;">Dashboard</a>
+            @endif
+            @if(Auth::user()->is_admin == 1)
+            <a href="{{ url('panel/dashboard') }}" class="btn btn-primary px-4" style="margin-left: 8px;">Dashboard</a>
+            @endif
           </form>
           @endauth
 
