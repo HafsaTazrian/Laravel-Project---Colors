@@ -105,11 +105,11 @@ Delete existing Blogs
 - Logout
 
 
-## Database:
+# Database:
 
 6 tables are used:
 
-# users table:
+### users table:
 
 
 
