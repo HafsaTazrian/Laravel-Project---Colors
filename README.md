@@ -13,7 +13,7 @@ It has three main parts:
 - The User side
 - The Admin side
 
-The website opens on the Home page and which shows the various aspect of this website alongside the published blogs. When logged in as a User it will show the User Dashboard and other maintainace sections. When logges in as an Admin it will show the Admin Dashboard and some maintaining sections related to Admin
+The website opens on the Home page and which shows the various aspect of this website alongside the published blogs. When logged in as a User it will show the User Dashboard and other maintainace sections. When logged in as an Admin it will show the Admin Dashboard and some maintaining sections related to Admin
 
 - Admin Login:
 
@@ -51,28 +51,28 @@ It also contains some pages as
 
 It contains the following sections:
 
-- Dashboard
+- Dashboard: 
 It shows total Blog Posts, total Comments, total Blog Writers.
 It shows a line graph on the basis of total blog posts, total comments, total Blog Writers on basis of time.
 It shows a bar diagram on User Blogging activity (shows the users who have created blogs on basis of time).
 It shows a pie chart about the Categories and total blogs related to those categories.
 
-- Users
+- Users:   
 Create new Users
 Update existing Users
 Delete existing Users
 
-- Category
+- Category: 
 Create new Category
 Update existing Category
 Delete existing Category
 
-- Blogs
+- Blogs: 
 Create new Blogs
 Update existing Blogs
 Delete existing Blogs
 
-- Page
+- Page: 
 Create new Page
 Update existing Page
 
@@ -87,11 +87,11 @@ Update existing Page
 
 ## User part:
 
-- Dashboard
+- Dashboard: 
 It shows total Blog Posts written by this User, total Comments on the blogs of this User.
 It shows a line graph on the basis of total blog posts, total comments, total Blog Writers on basis of time.
 
-- Blogs
+- Blogs: 
 Create new Blogs
 Update existing Blogs
 Delete existing Blogs
@@ -106,4 +106,11 @@ Delete existing Blogs
 
 
 ## Database:
+
+6 tables are used:
+
+# users table:
+
+
+
 
