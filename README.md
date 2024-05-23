@@ -200,4 +200,4 @@ Delete existing Blogs
 
 ## Schema Diagram:
 
-
+![Uploading schema.jpg…]()
