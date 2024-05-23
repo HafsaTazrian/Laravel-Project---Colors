@@ -200,4 +200,4 @@ Delete existing Blogs
 
 ## Schema Diagram:
 
-![schema](https://github.com/HafsaTazrian/Laravel-Project---Colors/assets/170466716/63194811-b25e-4975-85ed-fea486e32500)
+![schema](https://github.com/HafsaTazrian/Laravel-Project---Colors/assets/170466716/df824c68-56f0-44b2-99dc-f2f6eaa442e9)
