@@ -105,12 +105,99 @@ Delete existing Blogs
 - Logout
 
 
-# Database:
+## Database:
 
 6 tables are used:
 
 ### users table:
 
+- id (bigint(20)) Primary key (auto increment)
+- name (varchar(255))
+- email (varchar(255))
+- emaill_verified_at (timestamp)
+- password (varchar(255))
+- remember_token (varchar(100))
+- profile_pic (varchar(100))
+- profile_identity (varchar(255))
+- profile_description (longtext)
+- remarks (varchar(255))
+- is_admin (tinyint(4))
+- status (tinyint(4))
+- is_delete (tinyint(4))
+- created_at (timestamp)
+- updated_at (timestamp)
+
+### category table
+
+- id (int(11)) PRIMARY KEY (auto increment)
+- name (varchar(255))
+- slug (varchar(255))
+- title (varchar(255))
+- meta_title (varchar(255))
+- meta_description (varchar(1000))
+- meta_keywords (varchar(255))
+- status (tinyint(4))
+- is_menu (tinyint(4))
+- is_delete (tinyint(4))
+- created_at (datetime)
+- updated_at (datetime)
 
 
+### blog table:
 
+- id (int(11)) PRIMARY KEY (auto increment)
+- user_id (int(11)) FOREIGN KEY references users(id)
+- title (varchar(255))
+- slug (varchar(255))
+- category_id (int(11)) FOREIGN KEY references category(id)
+- image_file (varchar(255))
+- description (longtext)
+- meta_description (varchar(1000))
+- meta_keywords (varchar(255))
+- is_publish (tinyint(4))
+- status (tinyint(4))
+- is_delete (tinyint(4))
+- created_at (datetime)
+- updated_at (datetime)
+
+### blog_comment table
+
+- id (int(11)) PRIMARY KEY (auto increment)
+- user_id (int(11)) FOREIGN KEY references users(id)
+- blog_id (int(11)) FOREIGN KEY references blog(id)
+- comment (text)
+- created_at (datetime)
+- updated_at (datetime)
+
+### blog_comment_reply table
+
+- id (int(11)) PRIMARY KEY (auto increment)
+- user_id (int(11)) FOREIGN KEY references users(id)
+- comment_id (int(11)) FOREIGN KEY references blog_comment(id)
+- comment (text)
+- created_at (datetime)
+- updated_at (datetime)
+
+### blog_tags table:
+
+- id (int(11)) PRIMARY KEY (auto increment)
+- blog_id (int(11)) FOREIGN KEY references blog(id)
+- name (varchar(255))
+- created_at (datetime)
+- updated_at (datetime)
+
+### page table:
+
+- id (int(11)) PRIMARY KEY (auto increment)
+- slug (varchar(255))
+- title (varchar(255))
+- description (longtext)
+- meta_title (varchar(255))
+- meta_description (text)
+- meta_keywords (varchar(255))
+- created_at (datetime)
+- updated_at (datetime)
+
+## Schema Diagram:
+
+![Schema diagram]("/Project screenshots/schema.jpg")
