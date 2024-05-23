@@ -11,7 +11,7 @@
          
             <div class="card-body" >
               <h5 class="card-title" style="color: #12372a;">Pages
-                <a href="{{url('panel/page/add')}}" class="btn btn-primary" style="float: right; margin-top: -12px;background-color: #436850">Add Blog</a>
+                <a href="{{url('panel/page/add')}}" class="btn btn-primary" style="float: right; margin-top: -12px;background-color: #436850">Add Page</a>
               </h5>
 
               

@@ -1,82 +1,109 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+## COLORS
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+COLORS is a blogging website which is mainly developed to publish art blogs and to administer the process of publishing blogs related to the art world.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+It was developed on Laravel 10. The database was MySQL and XAMPP was used.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+It has three main parts:
 
-## Learning Laravel
+- The Home side
+- The User side
+- The Admin side
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+The website opens on the Home page and which shows the various aspect of this website alongside the published blogs. When logged in as a User it will show the User Dashboard and other maintainace sections. When logges in as an Admin it will show the Admin Dashboard and some maintaining sections related to Admin
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- Admin Login:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Email: admin@gmail.com
+Password: 123456
 
 
-# Laravel-Project---Colors
+- User Login:
 
-This is a blogging website related to different artists and their paintings.
+Email: user@gmail.com
+Password: 123456
 
-Blogs section:
---user name
---title
---category
---slug
---image
---description
---tags
---publish
---status
+
+## Home part:
+
+The Home page contains 
+- Introduction
+- What we offer (Quick access by link About Us)
+- Learn about Us (Quick access by link About Us)
+- Upcoming Exhibition
+- Our teams (Quick access by link Our Teams)
+- Testemonial
+- Latest Blogs (Quick access by link Our Blog)
+
+It also contains some pages as 
+- Art Supplies (Contains blogs related to art supplies)
+- Arts (Contains blogs related to arts)
+- Artists (Contains blogs related to differenct artists)
+- Art Techniques (Contains blogs related to differenct art techniques)
+- Gallery (Contains some pictures of the activities arranged)
+- Contact (People can directly mail us from this)
+
+
+## Admin part:
+
+It contains the following sections:
+
+- Dashboard
+It shows total Blog Posts, total Comments, total Blog Writers.
+It shows a line graph on the basis of total blog posts, total comments, total Blog Writers on basis of time.
+It shows a bar diagram on User Blogging activity (shows the users who have created blogs on basis of time).
+It shows a pie chart about the Categories and total blogs related to those categories.
+
+- Users
+Create new Users
+Update existing Users
+Delete existing Users
+
+- Category
+Create new Category
+Update existing Category
+Delete existing Category
+
+- Blogs
+Create new Blogs
+Update existing Blogs
+Delete existing Blogs
+
+- Page
+Create new Page
+Update existing Page
+
+- Change Password
+
+- Account Settings
+
+- Need Help?
+
+- Logout
+
+
+## User part:
+
+- Dashboard
+It shows total Blog Posts written by this User, total Comments on the blogs of this User.
+It shows a line graph on the basis of total blog posts, total comments, total Blog Writers on basis of time.
+
+- Blogs
+Create new Blogs
+Update existing Blogs
+Delete existing Blogs
+
+- Change Password
+
+- Account Settings
+
+- Need Help?
+
+- Logout
+
+
+## Database:
+
