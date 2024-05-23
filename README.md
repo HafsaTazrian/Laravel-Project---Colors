@@ -200,4 +200,4 @@ Delete existing Blogs
 
 ## Schema Diagram:
 
-![Schema diagram]("/Project screenshots/schema.jpg")
+![Schema diagram]("Project screenshots/schema.jpg")
