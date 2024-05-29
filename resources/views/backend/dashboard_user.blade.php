@@ -14,7 +14,7 @@
       @include('layouts._message')
 
     <!-- Blog Count Card -->
-<div class="col-xxl-6 col-md-6">
+<div class="col-xxl-4 col-md-6">
     <div class="card info-card sales-card" style="background-color: #fbfada;">
         <div class="filter">
             <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
@@ -44,7 +44,7 @@
 <!-- End Blog Count Card -->
 
 <!-- Blog Comment Count Card -->
-<div class="col-xxl-6 col-md-6" >
+<div class="col-xxl-4 col-md-6" >
     <div class="card info-card sales-card" style="background-color: #fbfada;">
         <div class="filter">
             <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
@@ -72,6 +72,39 @@
     </div>
 </div>
 <!-- End Blog Comment Count Card -->
+
+<!-- Comment Reply Count Card -->
+<div class="col-xxl-4 col-md-6">
+      <div class="card info-card sales-card" style="background-color: #fbfada;">
+        <div class="filter">
+            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                    <h6>Latest Replies: </h6>
+                </li>
+                <!-- Display latest replies directly in the dropdown menu -->
+                @forelse ($latestReplies as $reply)
+                <li><a class="dropdown-item" href="#">{{ $reply->reply_user_name }} on "<strong>{{ $reply->blog_title }}...</strong>": {{ $reply->reply_message }}</a></li>
+                @empty
+                <li><a class="dropdown-item" href="#">No replies found</a></li>
+                @endforelse
+            </ul>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Replies<span id="timePeriod">| To your Comments</span></h5>
+            <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                <i class='bx bx-chat'></i>
+                </div>
+                <div class="ps-3">
+                    <h6 id="blogCount">{{ $userTotalReplies }}</h6>
+                    <span class="text-muted small pt-2">replies</span>
+                </div>
+            </div>
+        </div>
+      </div>
+      </div>
+      <!-- End Comment Reply count Card -->
 
 <!--Reports-->
 <div class="col-12">

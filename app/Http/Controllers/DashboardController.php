@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\BlogModel;
 use App\Models\BlogCommentModel;
+use App\Models\BlogCommentReplyModel;
 use App\Models\CategoryModel;
 use App\Models\User;
 
@@ -56,7 +57,29 @@ class DashboardController extends Controller
     
             // Merge category data for pie chart into existing data array
             $data['categoryData'] = $categoryData;
-    
+
+            if (auth()->check()) {
+                $userId = auth()->user()->id;  // Get the logged-in user's ID
+        
+                // Fetch user-specific blog data
+                $data['userTotalBlogs'] = BlogModel::getTotalBlogsCountByUser($userId);
+                $data['userTodayBlogs'] = BlogModel::getTodayBlogsCountByUser($userId);
+                $data['userThisMonthBlogs'] = BlogModel::getThisMonthBlogsCountByUser($userId);
+                $data['userThisYearBlogs'] = BlogModel::getThisYearBlogsCountByUser($userId);
+        
+                // Fetch user-specific comments data
+                $data['userTotalComments'] = BlogCommentModel::getTotalCommentsCountByUser($userId);
+                $data['userTodayComments'] = BlogCommentModel::getTodayCommentsCountByUser($userId);
+                $data['userThisMonthComments'] = BlogCommentModel::getThisMonthCommentsCountByUser($userId);
+                $data['userThisYearComments'] = BlogCommentModel::getThisYearCommentsCountByUser($userId);
+
+                //Fetch user-specific replly data
+                $data['userTotalReplies'] = BlogCommentReplyModel::getTotalRepliesCountByUser($userId);
+
+                // Fetch latest replies to the user's comments
+                $data['latestReplies'] = BlogCommentReplyModel::getLatestRepliesByUser($userId);
+            }
+            
             return view('backend.dashboard', $data);
     }
 
@@ -75,7 +98,11 @@ class DashboardController extends Controller
         $userThisYearComments = BlogCommentModel::getThisYearCommentsCountByUser($userId);
 
 
-        return view('backend.dashboard_user', compact('userTotalBlogs', 'userTodayBlogs', 'userThisMonthBlogs', 'userThisYearBlogs',  'userTotalComments', 'userTodayComments', 'userThisMonthComments', 'userThisYearComments'));
+        $userTotalReplies = BlogCommentReplyModel::getTotalRepliesCountByUser($userId);
+        $latestReplies = BlogCommentReplyModel::getLatestRepliesByUser($userId);
+
+
+        return view('backend.dashboard_user', compact('userTotalBlogs', 'userTodayBlogs', 'userThisMonthBlogs', 'userThisYearBlogs',  'userTotalComments', 'userTodayComments', 'userThisMonthComments', 'userThisYearComments', 'userTotalReplies', 'latestReplies'));
     }
 
 
